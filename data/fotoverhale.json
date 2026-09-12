@@ -42,18 +42,6 @@
     ]
   },
   {
-    "id": "aksie-liefde",
-    "title": "Aksie/Liefde",
-    "genre": "Liefde & Romanse",
-    "language": "Afrikaans",
-    "publisher": "RP",
-    "format": "A4",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
     "id": "amanda",
     "title": "Amanda",
     "genre": "Liefde & Romanse",
@@ -140,30 +128,6 @@
     ]
   },
   {
-    "id": "apache-lone-wolf",
-    "title": "Apache/Lone Wolf",
-    "genre": "Westerns",
-    "language": "Engels",
-    "publisher": "RP",
-    "format": "A4",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
-    "id": "apache-mark-condor",
-    "title": "Apache/Mark Condor",
-    "genre": "Westerns",
-    "language": "Engels",
-    "publisher": "RP",
-    "format": "A4",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
     "id": "arend-van-die-oerwoud",
     "title": "Arend van die Oerwoud",
     "genre": "Aksie & Avontuur",
@@ -203,18 +167,6 @@
         "image": "/covers/arend-van-die-oerwoud-en-tanya-die-vegter/14._Arend_Van_Die_Oerwoud_en_Tanya_Die_Vegter_-_Tem_die_monster_en_Om_haar_die_geweld.jpg"
       }
     ]
-  },
-  {
-    "id": "arend-van-die-oerwoud-tanya-die-vegter",
-    "title": "Arend van die Oerwoud/Tanya die Vegter",
-    "genre": "Aksie & Avontuur",
-    "language": "Afrikaans",
-    "publisher": "RP",
-    "format": "A4",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
   },
   {
     "id": "avenger-the-vervolg-van-torak",
@@ -450,18 +402,6 @@
     "issues": []
   },
   {
-    "id": "big-iron-the",
-    "title": "Big Iron (The)",
-    "genre": "Aksie & Avontuur",
-    "language": "Engels",
-    "publisher": "LP",
-    "format": "A5",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
     "id": "billy",
     "title": "Billy",
     "genre": "Aksie & Avontuur",
@@ -578,18 +518,6 @@
         "image": "/covers/buks/109._Buks_-_Die_dertiende_slagoffer.jpg"
       }
     ]
-  },
-  {
-    "id": "buks-vervolg-van-steyn-beyers",
-    "title": "Buks (vervolg van \"Steyn Beyers\")",
-    "genre": "Aksie & Avontuur",
-    "language": "Afrikaans",
-    "publisher": "LP",
-    "format": "A5",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
   },
   {
     "id": "call-for-johny",
@@ -841,30 +769,6 @@
     "genre": "Aksie & Avontuur",
     "language": "Engels",
     "publisher": "Key photo studios",
-    "format": "A5",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
-    "id": "dagboek",
-    "title": "Dagboek",
-    "genre": "Liefde & Romanse",
-    "language": "Afrikaans",
-    "publisher": "RP",
-    "format": "A5",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
-    "id": "dan-pienaar-grensvegter",
-    "title": "Dan Pienaar (Grensvegter)",
-    "genre": "Aksie & Avontuur",
-    "language": "Afrikaans",
-    "publisher": "RP",
     "format": "A5",
     "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
     "total_covers": 0,
@@ -1899,18 +1803,6 @@
     ]
   },
   {
-    "id": "eerste-liefde-dr-conrad-brand",
-    "title": "Eerste Liefde/Dr Conrad Brand",
-    "genre": "Medies & Hospitaal",
-    "language": "Afrikaans",
-    "publisher": "RP",
-    "format": "A4",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
     "id": "ella-edelweis",
     "title": "Ella Edelweis",
     "genre": "Aksie & Avontuur",
@@ -2168,30 +2060,6 @@
     "genre": "Aksie & Avontuur",
     "language": "Engels",
     "publisher": "?",
-    "format": "A5",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
-    "id": "gedoemde-dekaan-die",
-    "title": "Gedoemde Dekaan (Die)",
-    "genre": "Aksie & Avontuur",
-    "language": "Afrikaans",
-    "publisher": "JRA Bailey",
-    "format": "A5",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
-    "id": "geheim-die",
-    "title": "Geheim (Die)",
-    "genre": "Aksie & Avontuur",
-    "language": "Afrikaans",
-    "publisher": "RP",
     "format": "A5",
     "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
     "total_covers": 0,
@@ -2806,18 +2674,6 @@
     ]
   },
   {
-    "id": "kaptein-duiwel-beau-ontembare",
-    "title": "Kaptein Duiwel/Beau Ontembare",
-    "genre": "Aksie & Avontuur",
-    "language": "Afrikaans",
-    "publisher": "RP",
-    "format": "A4",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
     "id": "kid-colt",
     "title": "Kid Colt",
     "genre": "Westerns",
@@ -3162,18 +3018,6 @@
     ]
   },
   {
-    "id": "kyk-afrikaanse-weergawe-van-see",
-    "title": "Kyk (Afrikaanse weergawe van See)",
-    "genre": "Liefde & Romanse",
-    "language": "Afrikaans",
-    "publisher": "RP",
-    "format": "A4",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
     "id": "lara-lamont",
     "title": "Lara Lamont",
     "genre": "Aksie & Avontuur",
@@ -3380,18 +3224,6 @@
     ]
   },
   {
-    "id": "louise-oorspronklik-sister-louise",
-    "title": "Louise (oorspronklik Sister Louise)",
-    "genre": "Liefde & Romanse",
-    "language": "Engels",
-    "publisher": "RP",
-    "format": "A5",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
     "id": "love-affair",
     "title": "Love Affair",
     "genre": "Liefde & Romanse",
@@ -3554,18 +3386,6 @@
     ]
   },
   {
-    "id": "man-sonder-naam-steyn-beyers",
-    "title": "Man Sonder Naam (Steyn Beyers)",
-    "genre": "Aksie & Avontuur",
-    "language": "Afrikaans",
-    "publisher": "LP",
-    "format": "A5",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
     "id": "man-uit-die-ruimte",
     "title": "Man uit die Ruimte",
     "genre": "Aksie & Avontuur",
@@ -3611,18 +3431,6 @@
         "image": "/covers/man-with-no-name/57._Man_with_no_name_-_Kill_for_your_life.jpg"
       }
     ]
-  },
-  {
-    "id": "man-with-no-name-steyn-beyers",
-    "title": "Man with no name (Steyn Beyers)",
-    "genre": "Aksie & Avontuur",
-    "language": "Engels",
-    "publisher": "LP",
-    "format": "A5",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
   },
   {
     "id": "manhunter",
@@ -3839,18 +3647,6 @@
     ]
   },
   {
-    "id": "mes-die-vervolg-van-zelna-dia-in-afrikaans",
-    "title": "Mes (Die) (vervolg van \"Zelna Dia\" in afrikaans)",
-    "genre": "Speurder & Spioen",
-    "language": "Afrikaans",
-    "publisher": "LP",
-    "format": "A5",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
     "id": "mighty-samson",
     "title": "Mighty Samson",
     "genre": "Aksie & Avontuur",
@@ -3984,18 +3780,6 @@
         "image": "/covers/my-dagboek/43._My_Dagboek_-_Geen_titel.jpg"
       }
     ]
-  },
-  {
-    "id": "nagarend-die",
-    "title": "Nagarend (Die)",
-    "genre": "Aksie & Avontuur",
-    "language": "Afrikaans",
-    "publisher": "JRA Bailey",
-    "format": "A5",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
   },
   {
     "id": "naglegioen",
@@ -4278,18 +4062,6 @@
         "image": "/covers/rebel/98._Rebel_-_Vlam_van_wraak.jpg"
       }
     ]
-  },
-  {
-    "id": "rebel-vervolg-van-swart-adelaar",
-    "title": "Rebel (vervolg van \"Swart Adelaar\")",
-    "genre": "Aksie & Avontuur",
-    "language": "Afrikaans",
-    "publisher": "LP",
-    "format": "A5",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
   },
   {
     "id": "rebel-boy",
@@ -4771,18 +4543,6 @@
     ]
   },
   {
-    "id": "ruiter-in-swart-kid-die-swerwer",
-    "title": "Ruiter in Swart/Kid die Swerwer",
-    "genre": "Westerns",
-    "language": "Afrikaans",
-    "publisher": "RP",
-    "format": "A4",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
     "id": "sa-cosmopoliton-including-charmain",
     "title": "SA Cosmopoliton including Charmain",
     "genre": "Aksie & Avontuur",
@@ -4863,30 +4623,6 @@
         "image": "/covers/saboteur/83._Saboteur_-_Deadly_deception.jpg"
       }
     ]
-  },
-  {
-    "id": "saboteur-captain-devil",
-    "title": "Saboteur (Captain Devil)",
-    "genre": "Speurder & Spioen",
-    "language": "Engels",
-    "publisher": "RP",
-    "format": "A5",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
-    "id": "saboteur-kaptein-duiwel",
-    "title": "Saboteur (Kaptein Duiwel)",
-    "genre": "Speurder & Spioen",
-    "language": "Afrikaans",
-    "publisher": "RP",
-    "format": "A5",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
   },
   {
     "id": "samson",
@@ -5059,18 +4795,6 @@
     ]
   },
   {
-    "id": "see-engelse-weergawe-van-kyk",
-    "title": "See (Engelse weergawe van Kyk)",
-    "genre": "Liefde & Romanse",
-    "language": "Engels",
-    "publisher": "RP",
-    "format": "A4",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
     "id": "seun-van-mark-condor-engels-son-of-mark-condor",
     "title": "Seun van Mark Condor (Engels: Son of Mark Condor)",
     "genre": "Speurder & Spioen",
@@ -5193,18 +4917,6 @@
         "image": "/covers/skoolhoof/20._Skoolhoof_-_Noodlottige_soektog.jpg"
       }
     ]
-  },
-  {
-    "id": "skoolhoof-werner-hugo",
-    "title": "Skoolhoof (Werner Hugo)",
-    "genre": "Aksie & Avontuur",
-    "language": "Afrikaans",
-    "publisher": "Impala",
-    "format": "A5",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
   },
   {
     "id": "skrikruiter",
@@ -5427,18 +5139,6 @@
     ]
   },
   {
-    "id": "spy-x-0-3-afr-spioen-x-0-3",
-    "title": "Spy X-0-3 (Afr: Spioen X-0-3)",
-    "genre": "Speurder & Spioen",
-    "language": "Engels",
-    "publisher": "RP",
-    "format": "A5",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
     "id": "sqiz",
     "title": "Sqiz",
     "genre": "Aksie & Avontuur",
@@ -5505,59 +5205,11 @@
     "issues": []
   },
   {
-    "id": "swart-adelaar",
-    "title": "Swart Adelaar",
-    "genre": "Aksie & Avontuur",
-    "language": "Afrikaans",
-    "publisher": "LP",
-    "format": "A5",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
-    "id": "swart-adelaar-die",
-    "title": "Swart Adelaar (Die)",
-    "genre": "Aksie & Avontuur",
-    "language": "Afrikaans",
-    "publisher": "Voortrekker/LP",
-    "format": "A5",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
-    "id": "swart-luiperd-die",
-    "title": "Swart Luiperd (Die)",
-    "genre": "Aksie & Avontuur",
-    "language": "Afrikaans",
-    "publisher": "RP",
-    "format": "A4 & A5",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
     "id": "sweet-love",
     "title": "Sweet Love",
     "genre": "Liefde & Romanse",
     "language": "Engels",
     "publisher": "JRA Bailey",
-    "format": "A5",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
-    "id": "swerwer-die",
-    "title": "Swerwer (Die)",
-    "genre": "Aksie & Avontuur",
-    "language": "Afrikaans",
-    "publisher": "JRA Bailey/Trinity",
     "format": "A5",
     "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
     "total_covers": 0,
@@ -5657,18 +5309,6 @@
         "image": "/covers/tarka/11._Tarka_-_En_die_geheim_van_die_grotte.jpg"
       }
     ]
-  },
-  {
-    "id": "tarka-koning-van-die-oerwoud",
-    "title": "Tarka (Koning van die oerwoud)",
-    "genre": "Aksie & Avontuur",
-    "language": "Afrikaans",
-    "publisher": "Photo Scripts",
-    "format": "A5",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
   },
   {
     "id": "teen-scene",
@@ -5946,18 +5586,6 @@
     "issues": []
   },
   {
-    "id": "tessa-kid-colt",
-    "title": "Tessa/Kid Colt",
-    "genre": "Westerns",
-    "language": "Afrikaans",
-    "publisher": "RP",
-    "format": "A4",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
     "id": "that-man-sam",
     "title": "That Man Sam",
     "genre": "Aksie & Avontuur",
@@ -6178,18 +5806,6 @@
     ]
   },
   {
-    "id": "uwe-die",
-    "title": "Uwe (Die)",
-    "genre": "Aksie & Avontuur",
-    "language": "Afrikaans",
-    "publisher": "MM",
-    "format": "A5",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
     "id": "venus",
     "title": "Venus",
     "genre": "Aksie & Avontuur",
@@ -6373,18 +5989,6 @@
     ]
   },
   {
-    "id": "verdwaalde-harte-saal-10",
-    "title": "Verdwaalde Harte/Saal 10",
-    "genre": "Medies & Hospitaal",
-    "language": "Afrikaans",
-    "publisher": "RP",
-    "format": "A4",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
     "id": "vice-squad",
     "title": "Vice Squad",
     "genre": "Aksie & Avontuur",
@@ -6547,18 +6151,6 @@
     "issues": []
   },
   {
-    "id": "wit-tier-die",
-    "title": "Wit Tier (Die)",
-    "genre": "Aksie & Avontuur",
-    "language": "Afrikaans",
-    "publisher": "RP",
-    "format": "A4 & A5",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
-  },
-  {
     "id": "woeste-laeveld",
     "title": "Woeste Laeveld",
     "genre": "Aksie & Avontuur",
@@ -6663,18 +6255,6 @@
         "image": "/covers/young-love-and-love-story/18._Young_Love_and_Love_Story_-_Hidden_love_and_Absent_lover.jpg"
       }
     ]
-  },
-  {
-    "id": "young-love-love-story",
-    "title": "Young Love/Love Story",
-    "genre": "Liefde & Romanse",
-    "language": "Engels",
-    "publisher": "RP",
-    "format": "A4",
-    "description": "Gelys in die meester fotoverhale-indeks saamgestel deur Koos Papenfus, Sven Barsby en Carol Hardijzer.",
-    "total_covers": 0,
-    "cover_image": null,
-    "issues": []
   },
   {
     "id": "young-rebel-the-avenger",

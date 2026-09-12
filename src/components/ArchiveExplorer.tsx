@@ -1,7 +1,7 @@
 "use client";
 import { useState, useMemo } from "react";
 import Fuse from "fuse.js";
-import { Search, SlidersHorizontal, Image as ImageIcon, Sparkles, X, BookOpen } from "lucide-react";
+import { Search, SlidersHorizontal, Image as ImageIcon, Sparkles, X, BookOpen, Layers, Info, HelpCircle } from "lucide-react";
 import { Series, GenreCategory } from "@/types";
 import SeriesCard from "./SeriesCard";
 
@@ -25,8 +25,19 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<GenreCategory>("Alles");
   const [selectedLetter, setSelectedLetter] = useState<string>("Alles");
-  const [onlyWithCovers, setOnlyWithCovers] = useState<boolean>(false);
+  
+  // Default to TRUE so visitors immediately see the 116 series with actual covers!
+  const [onlyWithCovers, setOnlyWithCovers] = useState<boolean>(true);
   const [sortBy, setSortBy] = useState<"title" | "covers" | "issues">("covers");
+
+  // Count statistics
+  const totalWithCovers = useMemo(() => {
+    return initialSeries.filter((s) => s.total_covers > 0).length;
+  }, [initialSeries]);
+
+  const totalWithoutCovers = useMemo(() => {
+    return initialSeries.filter((s) => s.total_covers === 0).length;
+  }, [initialSeries]);
 
   // Setup Fuse.js for instant fuzzy search
   const fuse = useMemo(() => {
@@ -64,7 +75,6 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
     // 3. A-Z Filter
     if (selectedLetter !== "Alles") {
       list = list.filter((s) => {
-        // Strip common prefixes like "Die " or "The " if needed, or check direct first char
         const cleanTitle = s.title.replace(/^(die|the)\s+/i, "");
         return (
           cleanTitle.toUpperCase().startsWith(selectedLetter) ||
@@ -92,7 +102,6 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
         }
         return a.title.localeCompare(b.title, "af");
       }
-      // title sort
       return a.title.localeCompare(b.title, "af");
     });
 
@@ -103,22 +112,78 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
     setSearchQuery("");
     setSelectedCategory("Alles");
     setSelectedLetter("Alles");
-    setOnlyWithCovers(false);
+    setOnlyWithCovers(true);
+    setSortBy("covers");
   };
 
   const hasActiveFilters =
     searchQuery.trim() !== "" ||
     selectedCategory !== "Alles" ||
     selectedLetter !== "Alles" ||
-    onlyWithCovers;
+    !onlyWithCovers;
 
   return (
-    <section className="space-y-8" id="galery">
+    <section className="space-y-6" id="galery">
       
+      {/* View Switcher Tabs (Galery met Voorblaaie vs Alle Reekse) */}
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-panel-border pb-4">
+        
+        {/* Main View Tabs */}
+        <div className="flex items-center p-1 bg-panel rounded-xl border border-panel-border w-full sm:w-auto">
+          <button
+            onClick={() => setOnlyWithCovers(true)}
+            className={`flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-heading uppercase tracking-wider transition-all ${
+              onlyWithCovers
+                ? "bg-pulp-amber text-graphite font-bold shadow-md shadow-pulp-amber/20"
+                : "text-slate-muted hover:text-paper"
+            }`}
+          >
+            <ImageIcon className="w-4 h-4" />
+            <span>Galery met Voorblaaie ({totalWithCovers})</span>
+          </button>
+
+          <button
+            onClick={() => setOnlyWithCovers(false)}
+            className={`flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-heading uppercase tracking-wider transition-all ${
+              !onlyWithCovers
+                ? "bg-pulp-amber text-graphite font-bold shadow-md shadow-pulp-amber/20"
+                : "text-slate-muted hover:text-paper"
+            }`}
+          >
+            <BookOpen className="w-4 h-4" />
+            <span>Volledige Meesterlys ({initialSeries.length})</span>
+          </button>
+        </div>
+
+        {/* Informational helper badge */}
+        <div className="text-xs text-slate-muted hidden md:flex items-center gap-1.5 font-mono">
+          <Info className="w-3.5 h-3.5 text-pulp-amber" />
+          {onlyWithCovers ? (
+            <span>Wys slegs reekse met afgelaaide voorblaaie</span>
+          ) : (
+            <span>Sluit ook historiese rekords in waarvan voorblaaie gesoek word</span>
+          )}
+        </div>
+
+      </div>
+
+      {/* Notice Banner when viewing full list with missing covers */}
+      {!onlyWithCovers && (
+        <div className="bg-amber-950/30 border border-amber-800/40 rounded-xl p-4 flex items-start gap-3 text-xs sm:text-sm text-amber-200/90 font-serif leading-relaxed">
+          <HelpCircle className="w-5 h-5 text-pulp-amber shrink-0 mt-0.5" />
+          <div>
+            <strong className="text-pulp-amber font-heading uppercase tracking-wider block text-xs mb-0.5">
+              Historiese Argieflys Inligting:
+            </strong>
+            Van die {initialSeries.length} geregistreerde reekse in mnr. Koos Papenfus & Carol Hardijzer se argiewe, het <strong>{totalWithCovers} reekse tans geskandeerde voorblaaie ({initialSeries.reduce((a, s) => a + s.total_covers, 0)} beelde)</strong>. Die orige {totalWithoutCovers} reekse is belangrike historiese bibliografiese inskrywings waarvan ons versamelaars steeds soek na oorspronklike voorblaaie.
+          </div>
+        </div>
+      )}
+
       {/* Control Bar Container */}
       <div className="bg-panel rounded-xl border border-panel-border p-4 sm:p-6 shadow-xl space-y-5">
         
-        {/* Search Bar & Primary Toggles */}
+        {/* Search Bar & Sort Dropdown */}
         <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
           
           {/* Search Input */}
@@ -141,34 +206,18 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
             )}
           </div>
 
-          {/* Quick Toggles */}
-          <div className="flex items-center gap-3 flex-wrap sm:flex-nowrap">
-            {/* Only With Covers Toggle */}
-            <button
-              onClick={() => setOnlyWithCovers(!onlyWithCovers)}
-              className={`flex items-center gap-2 px-3.5 py-2.5 rounded-lg border text-xs font-semibold tracking-wide transition-all whitespace-nowrap ${
-                onlyWithCovers
-                  ? "bg-pulp-amber/15 border-pulp-amber text-pulp-amber shadow-sm"
-                  : "bg-graphite/70 border-panel-border text-slate-muted hover:text-paper hover:bg-graphite"
-              }`}
+          {/* Sort Dropdown */}
+          <div className="flex items-center bg-graphite/70 border border-panel-border rounded-lg px-3 py-2 text-xs text-slate-muted self-end sm:self-auto">
+            <span className="hidden sm:inline mr-2">Sorteer:</span>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as any)}
+              className="bg-transparent text-paper text-xs focus:outline-none cursor-pointer py-1 font-medium"
             >
-              <ImageIcon className="w-4 h-4" />
-              <span>Slegs met Voorblaaie ({initialSeries.filter(s => s.total_covers > 0).length})</span>
-            </button>
-
-            {/* Sort Dropdown */}
-            <div className="flex items-center bg-graphite/70 border border-panel-border rounded-lg px-2.5 py-1.5 text-xs text-slate-muted">
-              <span className="hidden sm:inline mr-2">Sorteer:</span>
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as any)}
-                className="bg-transparent text-paper text-xs focus:outline-none cursor-pointer py-1"
-              >
-                <option value="covers" className="bg-panel text-paper">Meeste Voorblaaie</option>
-                <option value="title" className="bg-panel text-paper">Alfabeties (A–Z)</option>
-                <option value="issues" className="bg-panel text-paper">Meeste Uitgawes</option>
-              </select>
-            </div>
+              <option value="covers" className="bg-panel text-paper">Meeste Voorblaaie</option>
+              <option value="title" className="bg-panel text-paper">Alfabeties (A–Z)</option>
+              <option value="issues" className="bg-panel text-paper">Meeste Uitgawes</option>
+            </select>
           </div>
         </div>
 
@@ -228,7 +277,7 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
         <div>
           <span>Wys momenteel </span>
           <strong className="text-pulp-amber font-bold">{filteredSeries.length}</strong>
-          <span> van {initialSeries.length} reekse</span>
+          <span> van {onlyWithCovers ? totalWithCovers : initialSeries.length} reekse</span>
           {selectedCategory !== "Alles" && (
             <span> in <span className="text-paper">"{selectedCategory}"</span></span>
           )}
@@ -263,14 +312,29 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
             Geen fotoverhale gevind nie
           </h3>
           <p className="text-sm text-slate-muted max-w-md mx-auto mb-6">
-            Daar is geen reekse wat ooreenstem met u huidige soekterm of filter-keuses nie. Probeer 'n ander soekterm of herstel die filters.
+            Daar is geen reekse met voorblaaie wat ooreenstem met u huidige keuses nie.
+            {onlyWithCovers && (
+              <span className="block mt-2 text-pulp-amber">
+                Probeer oorskakel na "Volledige Meesterlys" om ook die historiese bibliografie-rekords te sien.
+              </span>
+            )}
           </p>
-          <button
-            onClick={clearFilters}
-            className="px-5 py-2.5 rounded-lg bg-pulp-amber text-graphite font-heading text-sm font-bold uppercase tracking-wider hover:bg-pulp-amber-hover transition-colors"
-          >
-            Herstel Alle Filters
-          </button>
+          <div className="flex justify-center gap-4">
+            <button
+              onClick={clearFilters}
+              className="px-5 py-2.5 rounded-lg bg-pulp-amber text-graphite font-heading text-sm font-bold uppercase tracking-wider hover:bg-pulp-amber-hover transition-colors"
+            >
+              Herstel Alle Filters
+            </button>
+            {onlyWithCovers && (
+              <button
+                onClick={() => setOnlyWithCovers(false)}
+                className="px-5 py-2.5 rounded-lg bg-panel border border-panel-border text-paper font-heading text-sm font-medium uppercase tracking-wider hover:bg-panel-border transition-colors"
+              >
+                Wys Volledige Meesterlys
+              </button>
+            )}
+          </div>
         </div>
       )}
 

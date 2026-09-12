@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
-import { BookOpen, Layers, Globe } from "lucide-react";
+import { BookOpen, Layers, Globe, Search } from "lucide-react";
 import { Series } from "@/types";
 
 interface SeriesCardProps {
@@ -9,7 +8,7 @@ interface SeriesCardProps {
 }
 
 export default function SeriesCard({ series }: SeriesCardProps) {
-  const hasCover = Boolean(series.cover_image);
+  const hasCover = Boolean(series.cover_image && series.total_covers > 0);
 
   // Genre badge color mapping
   const getGenreColor = (genre: string) => {
@@ -40,48 +39,43 @@ export default function SeriesCard({ series }: SeriesCardProps) {
             alt={series.title}
             className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
             loading="lazy"
-            onError={(e) => {
-              // Fallback to placeholder if broken
-              e.currentTarget.style.display = 'none';
-              const placeholder = e.currentTarget.parentElement?.querySelector('.cover-placeholder');
-              if (placeholder) {
-                (placeholder as HTMLElement).style.display = 'flex';
-              }
-            }}
           />
-        ) : null}
+        ) : (
+          /* High quality archival catalog placeholder */
+          <div className="w-full h-full p-4 flex flex-col justify-between items-center text-center bg-gradient-to-b from-panel via-charcoal to-[#171a21] border-b border-panel-border select-none">
+            <div className="w-full flex justify-between items-center text-[10px] text-slate-muted uppercase tracking-widest font-heading">
+              <span>{series.language}</span>
+              <span className="text-pulp-amber/90 font-mono">{series.publisher || "RP"}</span>
+            </div>
 
-        {/* Fallback Retro Cover Placeholder if no image */}
-        <div
-          className={`cover-placeholder w-full h-full p-4 flex flex-col justify-between items-center text-center bg-gradient-to-b from-panel to-charcoal border-b border-panel-border ${
-            hasCover ? "hidden" : "flex"
-          }`}
-        >
-          <div className="w-full flex justify-between items-center text-[10px] text-slate-muted uppercase tracking-widest font-heading">
-            <span>{series.language}</span>
-            <span>{series.publisher || "RP"}</span>
+            <div className="my-auto px-2">
+              <div className="w-12 h-12 rounded-full bg-graphite/80 border border-panel-border flex items-center justify-center mx-auto mb-2 group-hover:border-pulp-amber/60 transition-colors">
+                <BookOpen className="w-6 h-6 text-slate-muted group-hover:text-pulp-amber transition-colors" />
+              </div>
+              <span className="font-heading text-base sm:text-lg font-bold text-paper uppercase tracking-wider block line-clamp-3">
+                {series.title}
+              </span>
+              <span className="inline-block mt-2 px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider bg-graphite text-slate-muted border border-panel-border">
+                Voorblad Gesoek
+              </span>
+            </div>
+
+            <div className="text-[10px] text-slate-muted/80 font-mono tracking-tight leading-tight">
+              Historiese bibliografie-inskrywing
+            </div>
           </div>
-          <div className="my-auto">
-            <BookOpen className="w-10 h-10 text-pulp-amber/50 mx-auto mb-2 group-hover:text-pulp-amber transition-colors" />
-            <span className="font-heading text-lg font-bold text-paper uppercase tracking-wider block line-clamp-3">
-              {series.title}
-            </span>
-          </div>
-          <div className="text-[11px] text-pulp-amber/90 font-mono tracking-wider">
-            {series.issues.length > 0 ? `${series.issues.length} Uitgawes gelys` : "Katalogus-inskrywing"}
-          </div>
-        </div>
+        )}
 
         {/* Badge Overlay */}
         <div className="absolute top-2.5 right-2.5 flex flex-col items-end gap-1 z-10">
-          {series.total_covers > 0 ? (
+          {hasCover ? (
             <span className="px-2 py-0.5 text-[11px] font-semibold bg-graphite/90 text-pulp-amber border border-pulp-amber/40 rounded backdrop-blur shadow-md flex items-center gap-1">
               <Layers className="w-3 h-3" />
               {series.total_covers} {series.total_covers === 1 ? "Voorblad" : "Voorblaaie"}
             </span>
           ) : (
-            <span className="px-2 py-0.5 text-[10px] font-medium bg-graphite/80 text-slate-muted border border-panel-border rounded backdrop-blur">
-              {series.issues.length} {series.issues.length === 1 ? "Titel" : "Titels"}
+            <span className="px-2 py-0.5 text-[10px] font-medium bg-graphite/90 text-amber-400 border border-amber-500/40 rounded backdrop-blur shadow">
+              Argiefrekord
             </span>
           )}
         </div>
@@ -107,8 +101,10 @@ export default function SeriesCard({ series }: SeriesCardProps) {
             {series.title}
           </h3>
 
-          <p className="text-xs text-slate-muted line-clamp-2 mt-1.5 leading-relaxed">
-            {series.description}
+          <p className="text-xs text-slate-muted line-clamp-2 mt-1.5 leading-relaxed font-serif">
+            {hasCover 
+              ? series.description 
+              : "Opgeteken in die meester fotoverhale-indeks deur Koos Papenfus & Carol Hardijzer. Voorblad word tans gesoek deur ons versamelaars."}
           </p>
         </div>
 
@@ -117,7 +113,7 @@ export default function SeriesCard({ series }: SeriesCardProps) {
             {series.publisher || "Republikeinse Publikasies"}
           </span>
           <span className="text-pulp-amber group-hover:underline font-medium flex items-center gap-0.5">
-            Bekyk Reeks &rarr;
+            {hasCover ? "Bekyk Reeks →" : "Bekyk Inligting →"}
           </span>
         </div>
       </div>
