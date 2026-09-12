@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #121417;
+  --foreground: #F5EFEB;
+}
+
+body {
+  background-color: #121417;
+  color: #F5EFEB;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Custom Pulp Grain & Halftone Subtle Texture */
+.bg-halftone {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Subtle aged paper header border */
+.pulp-border {
+  border-color: #2E3642;
+}
+
+/* Custom scrollbar for pulp dark aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121417;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2E3642;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E08838;
+}
+
+/* Typographic Headings */
+h1, h2, h3, .font-pulp {
+  font-family: 'Oswald', 'Bebas Neue', Impact, sans-serif;
+  letter-spacing: 0.03em;
+}
