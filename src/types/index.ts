@@ -14,6 +14,7 @@ export interface Series {
   description: string;
   total_covers: number;
   cover_image: string | null;
+  aliases?: string[];
   issues: Issue[];
 }
 

@@ -1,7 +1,7 @@
 "use client";
 import { useState, useMemo } from "react";
 import Fuse from "fuse.js";
-import { Search, SlidersHorizontal, Image as ImageIcon, Sparkles, X, BookOpen, Layers, Info, HelpCircle } from "lucide-react";
+import { Search, SlidersHorizontal, Image as ImageIcon, X, BookOpen, Info } from "lucide-react";
 import { Series, GenreCategory } from "@/types";
 import SeriesCard from "./SeriesCard";
 
@@ -26,24 +26,14 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
   const [selectedCategory, setSelectedCategory] = useState<GenreCategory>("Alles");
   const [selectedLetter, setSelectedLetter] = useState<string>("Alles");
   
-  // Default to TRUE so visitors immediately see the series with actual covers!
-  const [onlyWithCovers, setOnlyWithCovers] = useState<boolean>(true);
   const [sortBy, setSortBy] = useState<"genre-language" | "title" | "covers" | "issues">("genre-language");
-
-  // Count statistics
-  const totalWithCovers = useMemo(() => {
-    return initialSeries.filter((s) => s.total_covers > 0).length;
-  }, [initialSeries]);
-
-  const totalWithoutCovers = useMemo(() => {
-    return initialSeries.filter((s) => s.total_covers === 0).length;
-  }, [initialSeries]);
 
   // Setup Fuse.js for instant fuzzy search
   const fuse = useMemo(() => {
     return new Fuse(initialSeries, {
       keys: [
         { name: "title", weight: 0.6 },
+        { name: "aliases", weight: 0.4 },
         { name: "genre", weight: 0.2 },
         { name: "description", weight: 0.15 },
         { name: "issues.title", weight: 0.1 },
@@ -76,19 +66,25 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
     if (selectedLetter !== "Alles") {
       list = list.filter((s) => {
         const cleanTitle = s.title.replace(/^(die|the)\s+/i, "");
-        return (
+        const titleMatch = (
           cleanTitle.toUpperCase().startsWith(selectedLetter) ||
           s.title.toUpperCase().startsWith(selectedLetter)
         );
+        const aliasMatch = Boolean(
+          s.aliases &&
+          s.aliases.some((a: string) => {
+            const cleanAlias = a.replace(/^(die|the)\s+/i, "");
+            return (
+              cleanAlias.toUpperCase().startsWith(selectedLetter) ||
+              a.toUpperCase().startsWith(selectedLetter)
+            );
+          })
+        );
+        return titleMatch || aliasMatch;
       });
     }
 
-    // 4. Only with covers
-    if (onlyWithCovers) {
-      list = list.filter((s) => s.total_covers > 0);
-    }
-
-    // 5. Sorting
+    // 4. Sorting
     const sorted = [...list].sort((a, b) => {
       if (sortBy === "genre-language") {
         const genreDiff = a.genre.localeCompare(b.genre, "af");
@@ -116,79 +112,37 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
     });
 
     return sorted;
-  }, [initialSeries, searchQuery, selectedCategory, selectedLetter, onlyWithCovers, sortBy, fuse]);
+  }, [initialSeries, searchQuery, selectedCategory, selectedLetter, sortBy, fuse]);
 
   const clearFilters = () => {
     setSearchQuery("");
     setSelectedCategory("Alles");
     setSelectedLetter("Alles");
-    setOnlyWithCovers(true);
     setSortBy("genre-language");
   };
 
   const hasActiveFilters =
     searchQuery.trim() !== "" ||
     selectedCategory !== "Alles" ||
-    selectedLetter !== "Alles" ||
-    !onlyWithCovers;
+    selectedLetter !== "Alles";
 
   return (
     <section className="space-y-6" id="gallery">
       
-      {/* View Switcher Tabs (Gallery met Voorblaaie vs Alle Reekse) */}
+      {/* Gallery Header Bar */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-panel-border pb-4">
-        
-        {/* Main View Tabs */}
-        <div className="flex items-center p-1 bg-panel rounded-xl border border-panel-border w-full sm:w-auto">
-          <button
-            onClick={() => setOnlyWithCovers(true)}
-            className={`flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-heading uppercase tracking-wider transition-all ${
-              onlyWithCovers
-                ? "bg-pulp-amber text-graphite font-bold shadow-md shadow-pulp-amber/20"
-                : "text-slate-muted hover:text-paper"
-            }`}
-          >
+        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-pulp-amber text-graphite font-heading text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md shadow-pulp-amber/20">
             <ImageIcon className="w-4 h-4" />
-            <span>Gallery met Voorblaaie ({totalWithCovers})</span>
-          </button>
-
-          <button
-            onClick={() => setOnlyWithCovers(false)}
-            className={`flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-heading uppercase tracking-wider transition-all ${
-              !onlyWithCovers
-                ? "bg-pulp-amber text-graphite font-bold shadow-md shadow-pulp-amber/20"
-                : "text-slate-muted hover:text-paper"
-            }`}
-          >
-            <BookOpen className="w-4 h-4" />
-            <span>Volledige Meesterlys ({initialSeries.length})</span>
-          </button>
-        </div>
-
-        {/* Informational helper badge */}
-        <div className="text-xs text-slate-muted hidden md:flex items-center gap-1.5 font-mono">
-          <Info className="w-3.5 h-3.5 text-pulp-amber" />
-          {onlyWithCovers ? (
-            <span>Wys slegs reekse met afgelaaide voorblaaie</span>
-          ) : (
-            <span>Sluit ook historiese rekords in waarvan voorblaaie gesoek word</span>
-          )}
-        </div>
-
-      </div>
-
-      {/* Notice Banner when viewing full list with missing covers */}
-      {!onlyWithCovers && (
-        <div className="bg-amber-950/30 border border-amber-800/40 rounded-xl p-4 flex items-start gap-3 text-xs sm:text-sm text-amber-200/90 font-serif leading-relaxed">
-          <HelpCircle className="w-5 h-5 text-pulp-amber shrink-0 mt-0.5" />
-          <div>
-            <strong className="text-pulp-amber font-heading uppercase tracking-wider block text-xs mb-0.5">
-              Historiese Argieflys Inligting:
-            </strong>
-            Van die {initialSeries.length} geregistreerde reekse in mnr. Koos Papenfus & Carol Hardijzer se argiewe, het <strong>{totalWithCovers} reekse tans geskandeerde voorblaaie ({initialSeries.reduce((a, s) => a + s.total_covers, 0)} beelde)</strong>. Die orige {totalWithoutCovers} reekse is belangrike historiese bibliografiese inskrywings waarvan ons versamelaars steeds soek na oorspronklike voorblaaie.
+            <span>Gallery met Voorblaaie ({initialSeries.length} Reekse)</span>
           </div>
         </div>
-      )}
+
+        <div className="text-xs text-slate-muted hidden md:flex items-center gap-1.5 font-mono">
+          <Info className="w-3.5 h-3.5 text-pulp-amber" />
+          <span>Gesorteer volgens Genre &amp; Taal (Afrikaans eerste, dan Engels)</span>
+        </div>
+      </div>
 
       {/* Control Bar Container */}
       <div className="bg-panel rounded-xl border border-panel-border p-4 sm:p-6 shadow-xl space-y-5">
@@ -288,7 +242,7 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
         <div>
           <span>Wys momenteel </span>
           <strong className="text-pulp-amber font-bold">{filteredSeries.length}</strong>
-          <span> van {onlyWithCovers ? totalWithCovers : initialSeries.length} reekse</span>
+          <span> van {initialSeries.length} reekse</span>
           {selectedCategory !== "Alles" && (
             <span> in <span className="text-paper">"{selectedCategory}"</span></span>
           )}
@@ -323,28 +277,15 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
             Geen fotoverhale gevind nie
           </h3>
           <p className="text-sm text-slate-muted max-w-md mx-auto mb-6">
-            Daar is geen reekse met voorblaaie wat ooreenstem met u huidige keuses nie.
-            {onlyWithCovers && (
-              <span className="block mt-2 text-pulp-amber">
-                Probeer oorskakel na "Volledige Meesterlys" om ook die historiese bibliografie-rekords te sien.
-              </span>
-            )}
+            Daar is geen reekse wat ooreenstem met u huidige keuses nie.
           </p>
-          <div className="flex justify-center gap-4">
+          <div className="flex justify-center">
             <button
               onClick={clearFilters}
               className="px-5 py-2.5 rounded-lg bg-pulp-amber text-graphite font-heading text-sm font-bold uppercase tracking-wider hover:bg-pulp-amber-hover transition-colors"
             >
               Herstel Alle Filters
             </button>
-            {onlyWithCovers && (
-              <button
-                onClick={() => setOnlyWithCovers(false)}
-                className="px-5 py-2.5 rounded-lg bg-panel border border-panel-border text-paper font-heading text-sm font-medium uppercase tracking-wider hover:bg-panel-border transition-colors"
-              >
-                Wys Volledige Meesterlys
-              </button>
-            )}
           </div>
         </div>
       )}
