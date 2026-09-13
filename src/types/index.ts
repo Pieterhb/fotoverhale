@@ -18,6 +18,22 @@ export interface Series {
   issues: Issue[];
 }
 
+export interface BookItem {
+  id: string;
+  seriesId: string;
+  seriesTitle: string;
+  issueNumber: number;
+  issueTitle: string;
+  image: string;
+  genre: string;
+  language: string;
+  publisher?: string;
+  format?: string;
+  seriesDescription?: string;
+  totalCoversInSeries: number;
+  aliases?: string[];
+}
+
 export type GenreCategory = 
   | "Alles"
   | "Aksie & Avontuur"
@@ -26,3 +42,4 @@ export type GenreCategory =
   | "Liefde & Romanse"
   | "Medies & Hospitaal"
   | "Engelse Uitgawes";
+
