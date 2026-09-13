@@ -1,4 +1,4 @@
-"useuse client"; // Note: this is a clean server or client nav
+"use client";
 import Link from "next/link";
 import { BookOpen, History, Info, Compass, Sparkles } from "lucide-react";
 
