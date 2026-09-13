@@ -27,8 +27,33 @@ export default async function HomePage() {
   const spotlightIds = ["mark-condor", "ruiter-in-swart", "grensvegter", "tessa", "die-wit-tier", "kid-colt"];
   const spotlightSeries = allSeries.filter((s) => spotlightIds.includes(s.id) && s.cover_image);
 
+  const jsonLdCollection = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Die Suid-Afrikaanse Fotoverhaal Argief",
+    "description": "Volledige versameling van 111 Suid-Afrikaanse fotoverhaal-reekse en 462 individuele boekvoorblaaie uit die era 1960–1985.",
+    "url": "https://fotoverhale.softcoverbooks.co.za",
+    "mainEntity": {
+      "@type": "ItemList",
+      "numberOfItems": allSeries.length,
+      "itemListElement": allSeries.slice(0, 50).map((s, idx) => ({
+        "@type": "ListItem",
+        "position": idx + 1,
+        "name": s.title,
+        "url": `https://fotoverhale.softcoverbooks.co.za/reeks/${s.id}`,
+        "image": s.cover_image ? `https://fotoverhale.softcoverbooks.co.za${s.cover_image}` : undefined,
+      })),
+    },
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-12 sm:space-y-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLdCollection),
+        }}
+      />
       
       {/* Hero Section */}
       <section className="relative overflow-hidden rounded-2xl bg-gradient-to-b from-panel via-charcoal to-graphite border border-panel-border p-6 sm:p-12 shadow-2xl">

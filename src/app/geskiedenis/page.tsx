@@ -4,12 +4,57 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Die Geskiedenis van die Suid-Afrikaanse Fotoverhaal | Koos Papenfus",
-  description: "Die volledige geskiedenis van die fotoverhaal in Suid-Afrika: Mark Condor, Ruiter in Swart, Grensvegter, en die impak van TV in 1976.",
+  description: "Die volledige geskiedenis van die fotoverhaal in Suid-Afrika: Mark Condor, Ruiter in Swart, Grensvegter, en die impak van TV in 1976. Deur Koos Papenfus.",
+  alternates: {
+    canonical: "https://fotoverhale.softcoverbooks.co.za/geskiedenis",
+  },
+  openGraph: {
+    title: "Die Geskiedenis van die Suid-Afrikaanse Fotoverhaal",
+    description: "Die volledige geskiedenis van die fotoverhaal in Suid-Afrika: Mark Condor, Ruiter in Swart, Grensvegter, en die koms van TV.",
+    url: "https://fotoverhale.softcoverbooks.co.za/geskiedenis",
+    type: "article",
+    authors: ["Koos Papenfus", "Pieter Haasbroek"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Die Geskiedenis van die Suid-Afrikaanse Fotoverhaal | Koos Papenfus",
+    description: "Die volledige historiese oorsig van die fotoverhaal in Suid-Afrika deur kenner Koos Papenfus.",
+  },
+};
+
+const jsonLdArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Die Geskiedenis van die Suid-Afrikaanse Fotoverhaal",
+  "description": "Die volledige geskiedenis van die fotoverhaal in Suid-Afrika: Mark Condor, Ruiter in Swart, Grensvegter, en die impak van TV in 1976.",
+  "inLanguage": "af",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Koos Papenfus"
+    },
+    {
+      "@type": "Person",
+      "name": "Pieter Haasbroek"
+    }
+  ],
+  "publisher": {
+    "@type": "Organization",
+    "name": "Suid-Afrikaanse Fotoverhaal Argief",
+    "url": "https://fotoverhale.softcoverbooks.co.za"
+  },
+  "mainEntityOfPage": "https://fotoverhale.softcoverbooks.co.za/geskiedenis"
 };
 
 export default function GeskiedenisPage() {
   return (
     <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLdArticle),
+        }}
+      />
       
       {/* Header Banner */}
       <header className="space-y-4 text-center border-b border-panel-border pb-10">

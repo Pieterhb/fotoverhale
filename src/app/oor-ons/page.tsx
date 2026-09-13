@@ -5,11 +5,48 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Oor Ons & Erkenning | Suid-Afrikaanse Fotoverhaal Argief",
   description: "Erkenning aan Pieter Haasbroek, Koos Papenfus en die pioniers wat hierdie Suid-Afrikaanse fotoverhaal erfenis digitaal bewaar het.",
+  alternates: {
+    canonical: "https://fotoverhale.softcoverbooks.co.za/oor-ons",
+  },
+  openGraph: {
+    title: "Oor Ons & Erkenning - Suid-Afrikaanse Fotoverhaal Argief",
+    description: "Die bewaringsgeskiedenis en erkenning aan Pieter Haasbroek, Koos Papenfus, Sven Barsby en Carol Hardijzer.",
+    url: "https://fotoverhale.softcoverbooks.co.za/oor-ons",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Oor Ons & Erkenning | Fotoverhaal Argief",
+    description: "Ontdek die bewaringsprojek en die mense agter die Suid-Afrikaanse Fotoverhaal Argief.",
+  },
+};
+
+const jsonLdAbout = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "Oor die Suid-Afrikaanse Fotoverhaal Argief",
+  "description": "Erkenning en agtergrond oor die digitale bewaring van Suid-Afrikaanse fotoverhale deur Pieter Haasbroek en navorsers.",
+  "inLanguage": "af",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "Suid-Afrikaanse Fotoverhaal Argief",
+    "founder": {
+      "@type": "Person",
+      "name": "Pieter Haasbroek"
+    },
+    "url": "https://fotoverhale.softcoverbooks.co.za"
+  }
 };
 
 export default function OorOnsPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLdAbout),
+        }}
+      />
       
       {/* Header */}
       <header className="text-center space-y-4 border-b border-panel-border pb-8">

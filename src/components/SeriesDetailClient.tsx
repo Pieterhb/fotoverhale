@@ -50,7 +50,7 @@ export default function SeriesDetailClient({ series }: SeriesDetailClientProps) 
               {series.cover_image ? (
                 <img
                   src={series.cover_image}
-                  alt={series.title}
+                  alt={`${series.title} - ${series.genre} Fotoverhaal Voorblad`}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               ) : (
@@ -185,7 +185,7 @@ export default function SeriesDetailClient({ series }: SeriesDetailClientProps) 
                   {issue.image ? (
                     <img
                       src={issue.image}
-                      alt={issue.title}
+                      alt={`${series.title} - Uitgawe #${issue.number || index + 1}: ${issue.title || series.title}`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       loading="lazy"
                     />
