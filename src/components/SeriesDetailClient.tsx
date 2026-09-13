@@ -23,7 +23,7 @@ export default function SeriesDetailClient({ series }: SeriesDetailClientProps) 
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-10">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 sm:pt-8 pb-8 sm:pb-12 space-y-6 sm:space-y-10">
       
       {/* Breadcrumb Navigation */}
       <nav className="flex items-center space-x-2 text-xs text-slate-muted">

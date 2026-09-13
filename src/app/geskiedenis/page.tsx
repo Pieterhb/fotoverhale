@@ -48,7 +48,7 @@ const jsonLdArticle = {
 
 export default function GeskiedenisPage() {
   return (
-    <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-12">
+    <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-2.5 sm:pt-10 pb-10 sm:pb-16 space-y-8 sm:space-y-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
