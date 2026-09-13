@@ -46,8 +46,16 @@ export default function SeriesCard({ series }: SeriesCardProps) {
         ) : (
           /* High quality archival catalog placeholder */
           <div className="w-full h-full p-4 flex flex-col justify-between items-center text-center bg-gradient-to-b from-panel via-charcoal to-[#171a21] border-b border-panel-border select-none">
-            <div className="w-full flex justify-between items-center text-[10px] text-slate-muted uppercase tracking-widest font-heading">
-              <span>{series.language}</span>
+            <div className="w-full flex justify-between items-center text-[10px] uppercase tracking-widest font-heading">
+              <span
+                className={`px-1.5 py-0.5 rounded text-[9px] font-bold ${
+                  series.language === "Afrikaans"
+                    ? "bg-red-600 text-white"
+                    : "bg-black text-yellow-400 border border-yellow-400/40"
+                }`}
+              >
+                {series.language}
+              </span>
               <span className="text-pulp-amber/90 font-mono">{series.publisher || "RP"}</span>
             </div>
 
@@ -85,7 +93,13 @@ export default function SeriesCard({ series }: SeriesCardProps) {
 
         {/* Language Badge on bottom left of cover */}
         <div className="absolute bottom-2.5 left-2.5 z-10">
-          <span className="px-2 py-0.5 text-[10px] font-semibold tracking-wider uppercase bg-graphite/85 text-paper-muted border border-panel-border rounded backdrop-blur">
+          <span
+            className={`px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase border rounded shadow-md ${
+              series.language === "Afrikaans"
+                ? "bg-red-600 text-white border-red-500"
+                : "bg-black text-yellow-400 border-yellow-400/50"
+            }`}
+          >
             {series.language}
           </span>
         </div>

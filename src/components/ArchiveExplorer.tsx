@@ -26,9 +26,9 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
   const [selectedCategory, setSelectedCategory] = useState<GenreCategory>("Alles");
   const [selectedLetter, setSelectedLetter] = useState<string>("Alles");
   
-  // Default to TRUE so visitors immediately see the 116 series with actual covers!
+  // Default to TRUE so visitors immediately see the series with actual covers!
   const [onlyWithCovers, setOnlyWithCovers] = useState<boolean>(true);
-  const [sortBy, setSortBy] = useState<"title" | "covers" | "issues">("covers");
+  const [sortBy, setSortBy] = useState<"genre-language" | "title" | "covers" | "issues">("genre-language");
 
   // Count statistics
   const totalWithCovers = useMemo(() => {
@@ -90,6 +90,16 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
 
     // 5. Sorting
     const sorted = [...list].sort((a, b) => {
+      if (sortBy === "genre-language") {
+        const genreDiff = a.genre.localeCompare(b.genre, "af");
+        if (genreDiff !== 0) return genreDiff;
+
+        const langRank = (lang: string) => (lang === "Afrikaans" ? 0 : 1);
+        const langDiff = langRank(a.language) - langRank(b.language);
+        if (langDiff !== 0) return langDiff;
+
+        return a.title.localeCompare(b.title, "af");
+      }
       if (sortBy === "covers") {
         if (b.total_covers !== a.total_covers) {
           return b.total_covers - a.total_covers;
@@ -113,7 +123,7 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
     setSelectedCategory("Alles");
     setSelectedLetter("Alles");
     setOnlyWithCovers(true);
-    setSortBy("covers");
+    setSortBy("genre-language");
   };
 
   const hasActiveFilters =
@@ -214,8 +224,9 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
               onChange={(e) => setSortBy(e.target.value as any)}
               className="bg-transparent text-paper text-xs focus:outline-none cursor-pointer py-1 font-medium"
             >
-              <option value="covers" className="bg-panel text-paper">Meeste Voorblaaie</option>
+              <option value="genre-language" className="bg-panel text-paper">Genre &amp; Taal (A–Z)</option>
               <option value="title" className="bg-panel text-paper">Alfabeties (A–Z)</option>
+              <option value="covers" className="bg-panel text-paper">Meeste Voorblaaie</option>
               <option value="issues" className="bg-panel text-paper">Meeste Uitgawes</option>
             </select>
           </div>

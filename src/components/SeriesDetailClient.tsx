@@ -82,8 +82,14 @@ export default function SeriesDetailClient({ series }: SeriesDetailClientProps) 
               <span className="px-3 py-1 rounded bg-pulp-amber/20 text-pulp-amber border border-pulp-amber/40 text-xs font-bold uppercase tracking-wider">
                 {series.genre}
               </span>
-              <span className="px-3 py-1 rounded bg-graphite/70 text-slate-muted border border-panel-border text-xs uppercase tracking-wider flex items-center gap-1">
-                <Globe className="w-3.5 h-3.5 text-pulp-amber" />
+              <span
+                className={`px-3 py-1 rounded text-xs font-bold uppercase tracking-wider flex items-center gap-1 border ${
+                  series.language === "Afrikaans"
+                    ? "bg-red-600 text-white border-red-500 shadow-sm"
+                    : "bg-black text-yellow-400 border-yellow-400/50 shadow-sm"
+                }`}
+              >
+                <Globe className="w-3.5 h-3.5" />
                 {series.language}
               </span>
               {series.publisher && (
