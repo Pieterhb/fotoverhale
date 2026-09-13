@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -30,6 +31,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="af" className="dark">
+      <head>
+        {/* Google tag (gtag.js) */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-FK83ZPEFDE"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-FK83ZPEFDE');
+          `}
+        </Script>
+      </head>
       <body className="bg-graphite text-paper min-h-screen flex flex-col selection:bg-pulp-amber selection:text-graphite antialiased">
         <Navbar />
         <main className="flex-1 bg-halftone">
@@ -40,3 +58,4 @@ export default function RootLayout({
     </html>
   );
 }
+
