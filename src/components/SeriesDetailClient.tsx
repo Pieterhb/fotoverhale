@@ -86,7 +86,7 @@ export default function SeriesDetailClient({ series }: SeriesDetailClientProps) 
                 className={`px-3 py-1 rounded text-xs font-bold uppercase tracking-wider flex items-center gap-1 border ${
                   series.language === "Afrikaans"
                     ? "bg-red-600 text-white border-red-500 shadow-sm"
-                    : "bg-black text-yellow-400 border-yellow-400/50 shadow-sm"
+                    : "bg-blue-600 text-white border-blue-500 shadow-sm"
                 }`}
               >
                 <Globe className="w-3.5 h-3.5" />

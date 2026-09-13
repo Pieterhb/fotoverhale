@@ -51,7 +51,7 @@ export default function SeriesCard({ series }: SeriesCardProps) {
                 className={`px-1.5 py-0.5 rounded text-[9px] font-bold ${
                   series.language === "Afrikaans"
                     ? "bg-red-600 text-white"
-                    : "bg-black text-yellow-400 border border-yellow-400/40"
+                    : "bg-blue-600 text-white border border-blue-400/40"
                 }`}
               >
                 {series.language}
@@ -97,7 +97,7 @@ export default function SeriesCard({ series }: SeriesCardProps) {
             className={`px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase border rounded shadow-md ${
               series.language === "Afrikaans"
                 ? "bg-red-600 text-white border-red-500"
-                : "bg-black text-yellow-400 border-yellow-400/50"
+                : "bg-blue-600 text-white border-blue-500"
             }`}
           >
             {series.language}
