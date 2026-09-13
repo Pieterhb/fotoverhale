@@ -2,7 +2,7 @@ import { Gift, ArrowRight } from "lucide-react";
 
 export default function PromoBanner() {
   return (
-    <div className="w-full my-6 sm:my-8">
+    <div className="w-full my-2 sm:my-1">
       <div 
         className="rounded-2xl border border-red-400/30 px-5 sm:px-6 py-3.5 sm:py-4 shadow-xl shadow-red-950/30 flex flex-col sm:flex-row items-center justify-between gap-3.5 sm:gap-4 transition-all duration-300 hover:border-red-400/50"
         style={{

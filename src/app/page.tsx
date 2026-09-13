@@ -48,7 +48,7 @@ export default async function HomePage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 sm:pt-8 pb-8 sm:pb-12 space-y-8 sm:space-y-16">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 sm:pt-4 pb-8 sm:pb-12 space-y-6 sm:space-y-6">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -57,7 +57,7 @@ export default async function HomePage() {
       />
       
       {/* Hero Section */}
-      <section className="relative overflow-hidden rounded-2xl bg-gradient-to-b from-panel via-charcoal to-graphite border border-panel-border p-6 sm:p-12 shadow-2xl">
+      <section className="relative overflow-hidden rounded-2xl bg-gradient-to-b from-panel via-charcoal to-graphite border border-panel-border p-6 sm:p-8 shadow-2xl">
         
         <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6 flex flex-col items-center">
           
@@ -157,7 +157,7 @@ export default async function HomePage() {
 
         {/* Featured Mini Showcase on Desktop */}
         {spotlightSeries.length > 0 && (
-          <div className="hidden lg:grid grid-cols-4 gap-3 mt-8 pt-8 border-t border-panel-border">
+          <div className="hidden lg:grid grid-cols-4 gap-3 mt-5 pt-5 border-t border-panel-border">
             <div className="col-span-4 text-xs font-heading uppercase text-pulp-amber tracking-widest mb-1 text-center">
               Gewilde Reekse in die Kollig:
             </div>
