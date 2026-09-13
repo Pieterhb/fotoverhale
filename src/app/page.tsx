@@ -4,6 +4,7 @@ import Link from "next/link";
 import { BookOpen, Layers, Calendar, Sparkles, ShieldCheck, ArrowDown } from "lucide-react";
 import { Series } from "@/types";
 import ArchiveExplorer from "@/components/ArchiveExplorer";
+import PromoBanner from "@/components/PromoBanner";
 
 async function getFotoverhaleData(): Promise<Series[]> {
   const filePath = path.join(process.cwd(), "data", "fotoverhale.json");
@@ -190,6 +191,9 @@ export default async function HomePage() {
         )}
 
       </section>
+
+      {/* Cross-Promotional Free Ebook Banner */}
+      <PromoBanner />
 
       {/* Main Interactive Explorer (Search, Filters, Grid) */}
       <ArchiveExplorer initialSeries={allSeries} />
