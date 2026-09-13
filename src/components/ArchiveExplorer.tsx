@@ -253,7 +253,7 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
         </div>
 
         {/* Category Filter Pills */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none text-xs">
+        <div className="flex items-center justify-center gap-2 overflow-x-auto pb-2 scrollbar-none text-xs">
           <span className="text-slate-muted font-heading uppercase text-xs tracking-wider shrink-0 mr-1 flex items-center gap-1">
             <SlidersHorizontal className="w-3.5 h-3.5 text-pulp-amber" />
             Kategorie:
@@ -278,7 +278,7 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
 
         {/* A–Z Alphabet Bar */}
         <div className="border-t border-panel-border pt-4">
-          <div className="flex items-center gap-1 overflow-x-auto pb-1 text-xs">
+          <div className="flex items-center justify-center gap-1 overflow-x-auto pb-1 text-xs flex-wrap">
             <span className="text-slate-muted font-heading uppercase text-[11px] tracking-wider shrink-0 mr-1">
               Indeks:
             </span>
