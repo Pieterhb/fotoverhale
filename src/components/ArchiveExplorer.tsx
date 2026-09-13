@@ -123,9 +123,9 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
     !onlyWithCovers;
 
   return (
-    <section className="space-y-6" id="galery">
+    <section className="space-y-6" id="gallery">
       
-      {/* View Switcher Tabs (Galery met Voorblaaie vs Alle Reekse) */}
+      {/* View Switcher Tabs (Gallery met Voorblaaie vs Alle Reekse) */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-panel-border pb-4">
         
         {/* Main View Tabs */}
@@ -139,7 +139,7 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
             }`}
           >
             <ImageIcon className="w-4 h-4" />
-            <span>Galery met Voorblaaie ({totalWithCovers})</span>
+            <span>Gallery met Voorblaaie ({totalWithCovers})</span>
           </button>
 
           <button

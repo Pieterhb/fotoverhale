@@ -35,7 +35,7 @@ export default function Navbar() {
               className="flex items-center space-x-1.5 px-3 py-2 rounded-md text-paper-muted hover:text-paper hover:bg-panel transition-all"
             >
               <Compass className="w-4 h-4 text-pulp-amber" />
-              <span className="font-heading tracking-wide uppercase text-sm">Galery</span>
+              <span className="font-heading tracking-wide uppercase text-sm">Gallery</span>
             </Link>
 
             <Link

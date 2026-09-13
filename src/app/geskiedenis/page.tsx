@@ -230,7 +230,7 @@ export default function GeskiedenisPage() {
               href="/"
               className="inline-flex items-center gap-2 bg-pulp-amber hover:bg-pulp-amber-hover text-graphite font-heading text-xs font-bold uppercase tracking-wider px-4 py-2 rounded transition-colors"
             >
-              <span>Gaan Terug na die Boekgalery</span>
+              <span>Gaan Terug na die Boekgallery</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

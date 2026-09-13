@@ -29,7 +29,7 @@ export default function SeriesDetailClient({ series }: SeriesDetailClientProps) 
       <nav className="flex items-center space-x-2 text-xs text-slate-muted">
         <Link href="/" className="hover:text-pulp-amber transition-colors flex items-center gap-1">
           <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Terug na Galery</span>
+          <span>Terug na Gallery</span>
         </Link>
         <span>/</span>
         <span>Reekse</span>

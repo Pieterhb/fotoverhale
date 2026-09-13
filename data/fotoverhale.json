@@ -1391,7 +1391,7 @@
     "publisher": "RP",
     "format": "A4",
     "description": "Twee romantiese verhale het per uitgawe verskyn, (deur Koos Papenfus).",
-    "total_covers": 2,
+    "total_covers": 6,
     "cover_image": "/covers/double-feature/173._Double_Feature_-_The_reward_and_The_final_challenge.jpg",
     "issues": [
       {
@@ -1894,18 +1894,18 @@
     "publisher": "JRA Bailey",
     "format": "A5",
     "description": "Gewilde Suid-Afrikaanse fotoverhaal-reeks Film fokus.",
-    "total_covers": 2,
-    "cover_image": "/covers/film-fokus/22._Film_Fokus_-_Verloening_deur_selfverwyt.jpg",
+    "total_covers": 0,
+    "cover_image": null,
     "issues": [
       {
         "number": 22,
         "title": "Verloening deur selfverwyt",
-        "image": "/covers/film-fokus/22._Film_Fokus_-_Verloening_deur_selfverwyt.jpg"
+        "image": null
       },
       {
         "number": 26,
         "title": "Vry soos 'n vlinder",
-        "image": "/covers/film-fokus/26._Film_Fokus_-_Vry_soos__n_vlinder.jpg"
+        "image": null
       }
     ]
   },
@@ -1965,33 +1965,33 @@
     "publisher": "RP/JRA Bailey",
     "format": "A5",
     "description": "57. Foto Fokus - Hunkering na geluk",
-    "total_covers": 5,
-    "cover_image": "/covers/foto-fokus/23._Foto_Fokus_-_Kan__n_vader_so_wreed_wees.jpg",
+    "total_covers": 0,
+    "cover_image": null,
     "issues": [
       {
         "number": 23,
         "title": "Kan 'n vader so wreed wees",
-        "image": "/covers/foto-fokus/23._Foto_Fokus_-_Kan__n_vader_so_wreed_wees.jpg"
+        "image": null
       },
       {
         "number": 46,
         "title": "Tiener liefde bring probleme",
-        "image": "/covers/foto-fokus/46._Foto_Fokus_-_Tiener_liefde_bring_probleme.jpg"
+        "image": null
       },
       {
         "number": 47,
         "title": "Geen titel",
-        "image": "/covers/foto-fokus/47._Foto_Fokus_-_Geen_titel.jpg"
+        "image": null
       },
       {
         "number": 56,
         "title": "Vlees van my vlees",
-        "image": "/covers/foto-fokus/56._Foto_Fokus_-_Vlees_van_my_vlees.jpg"
+        "image": null
       },
       {
         "number": 57,
         "title": "Hunkering na geluk",
-        "image": "/covers/foto-fokus/57._Foto_Fokus_-_Hunkering_na_geluk.jpg"
+        "image": null
       }
     ]
   },
@@ -2518,7 +2518,7 @@
     "publisher": "Republikeinse Publikasies",
     "format": "A5",
     "description": "KAPTEIN DUIWEL - Tipiese verhale uit die koue oorlog. Kaptein Duiwel is die bynaam van Ron de Ville, 'n breker spioen wat nie ooghare vir die rooies gehad het nie. Die verhale was ietwat stereotipies en was die gebruiklike aanvalle op vyande van die land gerig en die opblaas van vyandelike stellings. Die akteur se naam en die skrywer is onbekend aan my. Dit het later 'n boek gedeel met Beau die ontembare, sien onder.\n\nBEAU DIE ONTEMBARE - Die rol van Beau is vertolk deur die aantreklike Beau Brummel, die bekende akteur wat ook as kaalbas koning die nuus gehaal. Dit was baie oortuigende verhale uit die Mexikaans-Amerikaans se wilde weste. In plaas van JB Stetsons ,het die manne meestal Mexikaanse poncho’s en groot hoede gedra. Beau was ’n held wat altyd die minder bevoorregtes bygestaan het of mooie dames uit die moeilikheid uit gehelp het. Beau het natuurlik ook altyd met ’n dame in die arms geëindig. Bebaarde boosdoeners op die wettelose grens tussen die VSA en Mexiko, en self ook seerowers was van sy teenstanders. Soos gewoonlik het vuiste en snelvuur gevegte gereeld voorgekom. Dit het later 'n boek gedeel met Kaptein duiwel, sien onder, (deur Koos Papenfus).",
-    "total_covers": 1,
+    "total_covers": 30,
     "cover_image": "/covers/kaptein-duiwel-en-beau-die-ontembare/57._Kaptein_Duiwel_en_Beau_Die_Ontembare_-__n_Saak_van_identiteit_en_Sluipers_in_die_nag.jpg",
     "issues": [
       {
@@ -3163,13 +3163,13 @@
     "publisher": "RP",
     "format": "A5",
     "description": "Gewilde Suid-Afrikaanse fotoverhaal-reeks Lone Wolf.",
-    "total_covers": 1,
-    "cover_image": "/covers/lone-wolf/8._Lone_Wolf_-_Gamling_fever.jpg",
+    "total_covers": 0,
+    "cover_image": null,
     "issues": [
       {
         "number": 8,
         "title": "Gamling fever",
-        "image": "/covers/lone-wolf/8._Lone_Wolf_-_Gamling_fever.jpg"
+        "image": null
       }
     ]
   },
@@ -3231,13 +3231,13 @@
     "publisher": "RP",
     "format": "A5",
     "description": "Maar net nog een van die vele romantiese reekse, (deur Koos Papenfus).",
-    "total_covers": 1,
-    "cover_image": "/covers/love-affair/44._Love_affair_-_Lady_luck_smiled_and_Mountain_song.jpg",
+    "total_covers": 0,
+    "cover_image": null,
     "issues": [
       {
         "number": 44,
         "title": "Lady luck smiled... and Mountain song",
-        "image": "/covers/love-affair/44._Love_affair_-_Lady_luck_smiled_and_Mountain_song.jpg"
+        "image": null
       }
     ]
   },
@@ -3279,13 +3279,13 @@
     "publisher": "RP",
     "format": "A5",
     "description": "Dit was eers 'n enkel boekie en wat later met Charmaine in A4 grootte gekombineer was. Ek het baie keer gewonder hoe dit moontlik is dat daar soveel romantiese verhale suksesvol versprei kon word. Dan het ek aan \"Mills en Boon\" gedink en besef dat die mark in Suid Afrika lyk my nie sommer versadig raak daaraan nie, (deur Koos Papenfus).",
-    "total_covers": 1,
-    "cover_image": "/covers/love-story/132._Love_story_-_Out_of_the_shadow.jpg",
+    "total_covers": 0,
+    "cover_image": null,
     "issues": [
       {
         "number": 132,
         "title": "Out of the shadow",
-        "image": "/covers/love-story/132._Love_story_-_Out_of_the_shadow.jpg"
+        "image": null
       }
     ]
   },
@@ -5528,7 +5528,7 @@
     "publisher": "Republikeinse Publikasies",
     "format": "A5",
     "description": "Gewilde Suid-Afrikaanse fotoverhaal-reeks Tessa en Kid Colt.",
-    "total_covers": 6,
+    "total_covers": 8,
     "cover_image": "/covers/tessa-en-kid-colt/38._Tessa_and_Kid_Colt_-_Treasure_hunt_and_Blood_on_gold.jpg",
     "issues": [
       {

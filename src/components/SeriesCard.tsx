@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
 import { BookOpen, Layers, Globe, Search } from "lucide-react";
 import { Series } from "@/types";
@@ -8,7 +9,8 @@ interface SeriesCardProps {
 }
 
 export default function SeriesCard({ series }: SeriesCardProps) {
-  const hasCover = Boolean(series.cover_image && series.total_covers > 0);
+  const [imgError, setImgError] = useState(false);
+  const hasCover = Boolean(series.cover_image && series.total_covers > 0 && !imgError);
 
   // Genre badge color mapping
   const getGenreColor = (genre: string) => {
@@ -37,6 +39,7 @@ export default function SeriesCard({ series }: SeriesCardProps) {
           <img
             src={series.cover_image}
             alt={series.title}
+            onError={() => setImgError(true)}
             className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
             loading="lazy"
           />

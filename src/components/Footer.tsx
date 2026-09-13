@@ -41,7 +41,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/" className="hover:text-pulp-amber transition-colors">
-                  Fotoverhale Galery
+                  Fotoverhale Gallery
                 </Link>
               </li>
               <li>
@@ -89,7 +89,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-panel-border mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-muted">
           <p>
-            Kopiereg &copy; {new Date().getFullYear()} Suid-Afrikaanse Fotoverhaal Argief (fotoverhale.softcoverbooks.co.za). Alle regte voorbehou.
+            Kopiereg &copy; 2026 Pieter Haasbroek - Suid-Afrikaanse Fotoverhale Argief (fotoverhale.softcoverbooks.co.za). Alle regte voorbehou.
           </p>
           <p className="mt-2 sm:mt-0 flex items-center gap-1">
             Geskiedenis bewaar met trots in Suid-Afrika
