@@ -236,13 +236,13 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
             )}
           </div>
 
-          {/* Sort Dropdown */}
-          <div className="flex items-center bg-graphite/70 border border-panel-border rounded-lg px-3 py-2 text-xs text-slate-muted self-end sm:self-auto">
-            <span className="hidden sm:inline mr-2">Sorteer:</span>
+          {/* Sort Dropdown — centered on mobile, right-aligned on desktop */}
+          <div className="flex items-center justify-center md:justify-start bg-graphite/70 border border-panel-border rounded-lg px-3 py-2 text-xs text-slate-muted w-full md:w-auto">
+            <span className="mr-2 text-slate-muted">Sorteer:</span>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
-              className="bg-transparent text-paper text-xs focus:outline-none cursor-pointer py-1 font-medium"
+              className="bg-transparent text-paper text-xs focus:outline-none cursor-pointer py-1 font-medium flex-1 md:flex-none text-center md:text-left"
             >
               <option value="alphabetical" className="bg-panel text-paper">Alfabeties (A–Z)</option>
               <option value="genre-language" className="bg-panel text-paper">Genre &amp; Taal (A–Z)</option>
@@ -253,7 +253,56 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
         </div>
 
         {/* Category Filter Pills */}
-        <div className="flex items-center justify-center gap-2 overflow-x-auto pb-2 scrollbar-none text-xs">
+
+        {/* === MOBILE: 2-column grid (phones only) === */}
+        <div className="md:hidden">
+          <div className="flex items-center gap-1.5 mb-3">
+            <SlidersHorizontal className="w-3.5 h-3.5 text-pulp-amber" />
+            <span className="text-slate-muted font-heading uppercase text-xs tracking-wider">Kategorie:</span>
+          </div>
+          {/* "Alles" full-width first */}
+          <div className="mb-2">
+            {(() => {
+              const cat = "Alles";
+              const isActive = selectedCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat as GenreCategory)}
+                  className={`w-full px-3.5 py-2 rounded-full font-medium tracking-wide text-xs text-center transition-all border ${
+                    isActive
+                      ? "bg-pulp-amber text-graphite border-pulp-amber font-bold shadow-md shadow-pulp-amber/20"
+                      : "bg-graphite/60 border-panel-border text-slate-muted hover:text-paper hover:border-slate-500"
+                  }`}
+                >
+                  {cat}
+                </button>
+              );
+            })()}
+          </div>
+          {/* Remaining 6 categories in 2-column grid (3 rows) */}
+          <div className="grid grid-cols-2 gap-2">
+            {CATEGORIES.filter((cat) => cat !== "Alles").map((cat) => {
+              const isActive = selectedCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-3 py-2 rounded-full font-medium tracking-wide text-xs text-center whitespace-normal transition-all border ${
+                    isActive
+                      ? "bg-pulp-amber text-graphite border-pulp-amber font-bold shadow-md shadow-pulp-amber/20"
+                      : "bg-graphite/60 border-panel-border text-slate-muted hover:text-paper hover:border-slate-500"
+                  }`}
+                >
+                  {cat}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* === DESKTOP: original single-row scrollable pill strip === */}
+        <div className="hidden md:flex items-center justify-center gap-2 overflow-x-auto pb-2 scrollbar-none text-xs">
           <span className="text-slate-muted font-heading uppercase text-xs tracking-wider shrink-0 mr-1 flex items-center gap-1">
             <SlidersHorizontal className="w-3.5 h-3.5 text-pulp-amber" />
             Kategorie:
