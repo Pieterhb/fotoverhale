@@ -206,7 +206,7 @@ const PROJECTS = [
 
 export default function PdHaasbroekPage() {
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-10 pb-16 space-y-10 sm:space-y-14">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-5 pb-16 space-y-10 sm:space-y-14">
       {/* Schema.org ProfilePage Structured Data */}
       <script
         type="application/ld+json"
@@ -245,7 +245,8 @@ export default function PdHaasbroekPage() {
         <div className="bg-graphite/80 border border-panel-border rounded-xl p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="text-xs sm:text-sm text-slate-muted leading-relaxed font-serif">
             <p>
-              Hierdie bladsy dien as die amptelike biografiese en identiteitsverwysing vir <strong>P.D. Haasbroek</strong> (Pieter Daniel Haasbroek) op die Suid-Afrikaanse Fotoverhaal Argief en skakel direk met ons susterargief, die <a href="https://www.pulpbooksarchive.co.za/" target="_blank" rel="noopener noreferrer" className="text-pulp-amber underline font-sans">Pulp Books Archive</a>.
+              Hierdie bladsy dien as die amptelike biografiese en identiteitsverwysing vir{" "}
+              <strong className="whitespace-nowrap">P.D. Haasbroek</strong> (Pieter Daniel Haasbroek) op die Suid-Afrikaanse Fotoverhaal Argief en skakel direk met ons susterargief, die <a href="https://www.pulpbooksarchive.co.za/" target="_blank" rel="noopener noreferrer" className="text-pulp-amber underline font-sans">Pulp Books Archive</a>.
             </p>
           </div>
           <a
@@ -280,7 +281,7 @@ export default function PdHaasbroekPage() {
           </div>
           <h3 className="font-heading text-lg text-paper font-bold uppercase">Treasure Chest</h3>
           <p className="text-xs text-slate-muted leading-relaxed font-serif">
-            Heruitgawes, redigering, vertaling, manuskripvoorbereiding en nuwe omslagontwerpe vir seldsame historiese werke.
+            Heruitgawes, redigering, vertaling, manuskrip voorbereiding en nuwe omslagontwerpe vir seldsame historiese werke.
           </p>
         </div>
 
@@ -291,7 +292,7 @@ export default function PdHaasbroekPage() {
           </div>
           <h3 className="font-heading text-lg text-paper font-bold uppercase">Duisende Kunswerke</h3>
           <p className="text-xs text-slate-muted leading-relaxed font-serif">
-            Professionele digitale kuns, drukontwerpe (POD), illustrasies en vintage-boekvoorbladherstel.
+            Professionele digitale kuns, drukontwerpe (POD), illustrasies en vintage-boekvoorblad herstelwerk en nuwe voorblaaie.
           </p>
         </div>
 

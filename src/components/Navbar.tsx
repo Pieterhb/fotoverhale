@@ -6,12 +6,12 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-panel-border bg-graphite/95 backdrop-blur supports-[backdrop-filter]:bg-graphite/80 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between py-2.5 sm:py-0 sm:h-20 gap-2 sm:gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-center py-2.5 sm:py-0 sm:h-14 gap-2 sm:gap-6 lg:gap-8">
           
           {/* Logo & Brand */}
           <Link href="/" className="flex items-center space-x-2.5 sm:space-x-3 group shrink-0">
-            <div className="w-9 h-9 sm:w-12 sm:h-12 rounded bg-pulp-crimson/90 border border-pulp-amber/40 flex items-center justify-center shadow-lg group-hover:bg-pulp-crimson transition-all duration-200 shrink-0">
-              <span className="font-heading text-lg sm:text-2xl font-bold text-paper tracking-wider">FV</span>
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded bg-pulp-crimson/90 border border-pulp-amber/40 flex items-center justify-center shadow-lg group-hover:bg-pulp-crimson transition-all duration-200 shrink-0">
+              <span className="font-heading text-lg sm:text-xl font-bold text-paper tracking-wider">FV</span>
             </div>
             <div>
               <div className="flex items-center space-x-1.5 sm:space-x-2">
