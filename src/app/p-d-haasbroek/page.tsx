@@ -170,7 +170,7 @@ const PROJECTS = [
     external: true,
   },
   {
-    name: "TheBlackPanther on TeePublic",
+    name: "The Black Panther on TeePublic",
     badge: "Digitale Kuns",
     description: "Extensive print-on-demand artwork portfolio and digital illustration store.",
     link: "https://www.teepublic.com/user/theblackpanther",
@@ -208,7 +208,7 @@ const PROJECTS = [
 
 export default function PdHaasbroekPage() {
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-3.5 pb-6 space-y-10 sm:space-y-14">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-2.5 pb-6 space-y-10 sm:space-y-14">
       {/* Schema.org ProfilePage Structured Data */}
       <script
         type="application/ld+json"
@@ -218,7 +218,7 @@ export default function PdHaasbroekPage() {
       />
 
       {/* Hero Header */}
-      <header className="relative bg-gradient-to-br from-panel via-charcoal to-graphite rounded-2xl border border-panel-border p-6 sm:p-10 shadow-2xl overflow-hidden space-y-6">
+      <header className="relative bg-gradient-to-br from-panel via-charcoal to-graphite rounded-2xl border border-panel-border p-5 sm:px-8 sm:py-6 shadow-2xl overflow-hidden space-y-6">
         <div className="absolute top-0 right-0 w-80 h-80 bg-pulp-amber/5 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20"></div>
 
         <div className="flex flex-wrap items-center gap-2">
@@ -399,7 +399,7 @@ export default function PdHaasbroekPage() {
                 rel="noopener noreferrer"
                 className="text-pulp-amber font-sans font-bold hover:underline inline-flex items-center"
               >
-                TheBlackPanther op TeePublic <ExternalLink className="w-3.5 h-3.5 ml-0.5" />
+                The Black Panther op TeePublic <ExternalLink className="w-3.5 h-3.5 ml-0.5" />
               </a>
               .
             </p>
