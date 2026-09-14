@@ -32,7 +32,10 @@ const jsonLdAbout = {
     "name": "Suid-Afrikaanse Fotoverhaal Argief",
     "founder": {
       "@type": "Person",
-      "name": "Pieter Haasbroek"
+      "@id": "https://pulpbooksarchive.co.za/p-d-haasbroek/#person",
+      "name": "Pieter Daniel Haasbroek",
+      "alternateName": ["P.D. Haasbroek", "Pieter Haasbroek"],
+      "url": "https://fotoverhale.softcoverbooks.co.za/p-d-haasbroek"
     },
     "url": "https://fotoverhale.softcoverbooks.co.za"
   }
@@ -92,16 +95,42 @@ export default function OorOnsPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           
-          <div className="bg-graphite/80 border border-panel-border rounded-xl p-5 space-y-2">
-            <h3 className="font-heading text-lg text-paper uppercase">
-              Mnr. Pieter Haasbroek
-            </h3>
-            <span className="text-xs text-pulp-amber font-mono block">
-              Argiefstigter & Hoofbewaarder
-            </span>
-            <p className="text-xs text-slate-muted leading-relaxed font-serif">
-              Stigter van <em>softcoverbooks.co.za</em>. Sy lewenslange toewyding aan die opsporing, bewaring en digitalisering van seldsame voorblaaie vorm die ruggraat van hierdie argief.
-            </p>
+          <div className="bg-graphite/80 border border-pulp-amber/40 rounded-xl p-5 space-y-3 flex flex-col justify-between">
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <h3 className="font-heading text-lg text-paper uppercase font-bold">
+                  Mnr. Pieter Haasbroek
+                </h3>
+                <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-pulp-amber/20 text-pulp-amber border border-pulp-amber/30">
+                  P.D. Haasbroek
+                </span>
+              </div>
+              <span className="text-xs text-pulp-amber font-mono block">
+                Argiefstigter, Uitgewer &amp; Hoofbewaarder
+              </span>
+              <p className="text-xs text-slate-muted leading-relaxed font-serif">
+                Stigter van <em>softcoverbooks.co.za</em> en die <em>Pulp Books Archive</em>. Sy 30+ jaar toewyding aan die opsporing, bewaring, navorsing en digitalisering van seldsame Suid-Afrikaanse pulp- en fotoverhaal-erfenis vorm die ruggraat van hierdie argief.
+              </p>
+            </div>
+
+            <div className="pt-2 flex flex-wrap items-center gap-2">
+              <Link
+                href="/p-d-haasbroek"
+                className="inline-flex items-center space-x-1.5 bg-pulp-amber hover:bg-pulp-amber-hover text-graphite font-heading text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded transition-all shadow-sm"
+              >
+                <span>Biografiese Profiel</span>
+              </Link>
+              <a
+                href="https://pulpbooksarchive.co.za/p-d-haasbroek/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-1 text-xs text-slate-400 hover:text-pulp-amber border border-panel-border px-2.5 py-1.5 rounded transition-colors"
+                title="Pulp Books Archive Profiel"
+              >
+                <span>Pulp Books Archive</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            </div>
           </div>
 
           <div className="bg-graphite/80 border border-panel-border rounded-xl p-5 space-y-2">

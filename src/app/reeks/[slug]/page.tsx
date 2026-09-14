@@ -108,6 +108,13 @@ export default async function SeriesPage({
           "@type": "Organization",
           "name": series.publisher || "Republikeinse Publikasies",
         },
+        "editor": {
+          "@type": "Person",
+          "@id": "https://pulpbooksarchive.co.za/p-d-haasbroek/#person",
+          "name": "Pieter Daniel Haasbroek",
+          "alternateName": "P.D. Haasbroek",
+          "url": "https://fotoverhale.softcoverbooks.co.za/p-d-haasbroek"
+        },
         "image": series.cover_image
           ? `https://fotoverhale.softcoverbooks.co.za${series.cover_image}`
           : undefined,

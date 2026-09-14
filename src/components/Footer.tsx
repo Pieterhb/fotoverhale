@@ -20,17 +20,39 @@ export default function Footer() {
             <p className="text-sm text-slate-muted/90 max-w-md leading-relaxed">
               ’n Digitale bewaarplek en historiese rekord van die gewilde Suid-Afrikaanse fotoverhaal-era (1960–1985). Gestig om die unieke kyk-en-lees kultuurskatte vir navorsers, versamelaars en aanhangers te bewaar.
             </p>
-            <p className="text-xs text-slate-muted flex items-center gap-1.5 pt-2">
-              <span>’n Projek van</span>
-              <a 
-                href="https://www.softcoverbooks.co.za" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-pulp-amber hover:underline inline-flex items-center"
-              >
-                softcoverbooks.co.za <ArrowUpRight className="w-3 h-3 ml-0.5" />
-              </a>
-            </p>
+            <div className="text-xs text-slate-muted space-y-1.5 pt-2">
+              <p className="flex flex-wrap items-center gap-1.5">
+                <span>’n Projek van</span>
+                <a 
+                  href="https://www.softcoverbooks.co.za" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-pulp-amber hover:underline inline-flex items-center"
+                >
+                  softcoverbooks.co.za <ArrowUpRight className="w-3 h-3 ml-0.5" />
+                </a>
+                <span className="text-slate-600">•</span>
+                <a 
+                  href="https://www.pulpbooksarchive.co.za/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-slate-300 hover:text-pulp-amber hover:underline inline-flex items-center"
+                >
+                  Pulp Books Archive <ArrowUpRight className="w-3 h-3 ml-0.5" />
+                </a>
+              </p>
+              <p className="text-slate-300">
+                Geskep en gekureer deur{" "}
+                <a
+                  href="https://pulpbooksarchive.co.za/p-d-haasbroek/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-pulp-amber hover:underline font-semibold inline-flex items-center"
+                >
+                  P.D. Haasbroek (Pieter Daniel Haasbroek) <ArrowUpRight className="w-3 h-3 ml-0.5" />
+                </a>
+              </p>
+            </div>
           </div>
 
           {/* Navigasie */}
@@ -55,11 +77,26 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/p-d-haasbroek" className="text-pulp-amber/90 hover:text-pulp-amber font-medium transition-colors">
+                  Profiel: P.D. Haasbroek
+                </Link>
+              </li>
+              <li>
+                <a 
+                  href="https://www.pulpbooksarchive.co.za/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-pulp-amber transition-colors inline-flex items-center gap-1 text-xs text-slate-400"
+                >
+                  Pulp Books Archive <ArrowUpRight className="w-3 h-3" />
+                </a>
+              </li>
+              <li>
                 <a 
                   href="https://www.softcoverbooks.co.za/versamelaars.html" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="hover:text-pulp-amber transition-colors inline-flex items-center gap-1"
+                  className="hover:text-pulp-amber transition-colors inline-flex items-center gap-1 text-xs text-slate-400"
                 >
                   Versamelaars Netwerk <ArrowUpRight className="w-3 h-3" />
                 </a>
@@ -200,7 +237,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-panel-border/60 mt-5 pt-4 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-muted">
           <p>
-            Kopiereg &copy; 2026 Pieter Haasbroek - Suid-Afrikaanse Fotoverhale Argief (fotoverhale.softcoverbooks.co.za). Alle regte voorbehou.
+            Kopiereg &copy; 2026 P.D. Haasbroek (Pieter Daniel Haasbroek) - Suid-Afrikaanse Fotoverhale Argief (fotoverhale.softcoverbooks.co.za). Alle regte voorbehou.
           </p>
           <p className="mt-2 sm:mt-0 flex items-center gap-1">
             Geskiedenis bewaar met trots in Suid-Afrika

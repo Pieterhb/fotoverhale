@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { BookOpen, History, Info, Compass, Sparkles } from "lucide-react";
+import { BookOpen, History, Info, Compass, Sparkles, UserCheck } from "lucide-react";
 
 export default function Navbar() {
   return (
@@ -48,10 +48,18 @@ export default function Navbar() {
 
             <Link
               href="/oor-ons"
-              className="flex-1 sm:flex-initial flex items-center justify-center space-x-1 px-2.5 sm:px-3 py-1.5 rounded-md text-paper-muted hover:text-paper hover:bg-panel bg-panel/50 sm:bg-transparent border border-panel-border sm:border-transparent transition-all text-center"
+              className="flex-1 sm:flex-initial flex items-center justify-center space-x-1 px-2 sm:px-3 py-1.5 rounded-md text-paper-muted hover:text-paper hover:bg-panel bg-panel/50 sm:bg-transparent border border-panel-border sm:border-transparent transition-all text-center"
             >
               <Info className="w-3.5 h-3.5 text-pulp-amber shrink-0" />
               <span className="font-heading tracking-wide uppercase text-xs sm:text-sm">Oor Ons</span>
+            </Link>
+
+            <Link
+              href="/p-d-haasbroek"
+              className="flex-1 sm:flex-initial flex items-center justify-center space-x-1 px-2 sm:px-3 py-1.5 rounded-md text-paper-muted hover:text-paper hover:bg-panel bg-panel/50 sm:bg-transparent border border-panel-border sm:border-transparent transition-all text-center"
+            >
+              <UserCheck className="w-3.5 h-3.5 text-pulp-amber shrink-0" />
+              <span className="font-heading tracking-wide uppercase text-xs sm:text-sm">P.D. Haasbroek</span>
             </Link>
 
             {/* External link to main softcoverbooks.co.za */}

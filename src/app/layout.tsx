@@ -81,6 +81,9 @@ const jsonLdWebsite = {
       "name": "Die Suid-Afrikaanse Fotoverhaal Argief",
       "description": "Digitale bewaarplek en navorsingsargief vir die Suid-Afrikaanse fotoverhaal-era (1960–1985).",
       "inLanguage": "af",
+      "creator": {
+        "@id": "https://pulpbooksarchive.co.za/p-d-haasbroek/#person"
+      },
       "publisher": {
         "@id": "https://fotoverhale.softcoverbooks.co.za/#organization"
       }
@@ -91,13 +94,32 @@ const jsonLdWebsite = {
       "name": "Suid-Afrikaanse Fotoverhaal Argief",
       "url": "https://fotoverhale.softcoverbooks.co.za",
       "logo": "https://fotoverhale.softcoverbooks.co.za/icon-512.png",
+      "founder": {
+        "@id": "https://pulpbooksarchive.co.za/p-d-haasbroek/#person"
+      },
       "sameAs": [
         "https://www.softcoverbooks.co.za",
+        "https://www.pulpbooksarchive.co.za",
         "https://www.youtube.com/@BookswithHooks",
         "https://www.facebook.com/profile.php?id=61579044552820",
         "https://www.instagram.com/ebookswithhooks/",
         "https://x.com/PieterHaasbroe2",
         "https://za.pinterest.com/BlackLeopardPulp/"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://pulpbooksarchive.co.za/p-d-haasbroek/#person",
+      "name": "Pieter Daniel Haasbroek",
+      "alternateName": ["P.D. Haasbroek", "Pieter Haasbroek"],
+      "url": "https://fotoverhale.softcoverbooks.co.za/p-d-haasbroek",
+      "sameAs": [
+        "https://www.pulpbooksarchive.co.za/",
+        "https://pulpbooksarchive.co.za/p-d-haasbroek/",
+        "https://softcoverbooks.co.za/",
+        "https://www.flickfuture.com/",
+        "https://www.teepublic.com/user/theblackpanther",
+        "https://www.amazon.com/stores/Pieter-Haasbroek/author/B0FQ44RRLQ"
       ]
     }
   ]
