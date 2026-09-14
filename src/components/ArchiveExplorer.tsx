@@ -29,7 +29,7 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
   const [sortBy, setSortBy] = useState<"alphabetical" | "genre-language" | "issue" | "reverse">("alphabetical");
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
-  // Flatten all 111 series into individual book items (total 462 books)
+  // Flatten all 111 series into individual book items (total 433 books)
   const allBooks = useMemo<BookItem[]>(() => {
     const books: BookItem[] = [];
     for (const s of initialSeries) {
@@ -72,7 +72,7 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
     return books;
   }, [initialSeries]);
 
-  // Setup Fuse.js for instant fuzzy search across all 462 books
+  // Setup Fuse.js for instant fuzzy search across all 433 books
   const fuse = useMemo(() => {
     return new Fuse(allBooks, {
       keys: [

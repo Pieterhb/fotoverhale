@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft, BookOpen, Layers, Globe, Building, FileText, Maximize2, Share2 } from "lucide-react";
 import { Series } from "@/types";
 import Lightbox from "@/components/Lightbox";
+import PulpArchiveBanner from "@/components/PulpArchiveBanner";
 
 interface SeriesDetailClientProps {
   series: Series;
@@ -224,6 +225,9 @@ export default function SeriesDetailClient({ series }: SeriesDetailClientProps) 
           </div>
         )}
       </section>
+
+      {/* Cross-Link to Pulp Books Archive Banner */}
+      <PulpArchiveBanner />
 
       {/* Lightbox Modal */}
       <Lightbox

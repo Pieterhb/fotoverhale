@@ -5,6 +5,7 @@ import { BookOpen, Layers, Calendar, Sparkles, ShieldCheck, ArrowDown } from "lu
 import { Series } from "@/types";
 import ArchiveExplorer from "@/components/ArchiveExplorer";
 import PromoBanner from "@/components/PromoBanner";
+import PulpArchiveBanner from "@/components/PulpArchiveBanner";
 
 async function getFotoverhaleData(): Promise<Series[]> {
   const filePath = path.join(process.cwd(), "data", "fotoverhale.json");
@@ -32,7 +33,7 @@ export default async function HomePage() {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Die Suid-Afrikaanse Fotoverhaal Argief",
-    "description": "Volledige versameling van 111 Suid-Afrikaanse fotoverhaal-reekse en 462 individuele boekvoorblaaie uit die era 1960–1985.",
+    "description": "Volledige versameling van 111 Suid-Afrikaanse fotoverhaal-reekse en 433 individuele boekvoorblaaie uit die era 1960–1985.",
     "url": "https://fotoverhale.softcoverbooks.co.za",
     "mainEntity": {
       "@type": "ItemList",
@@ -197,6 +198,9 @@ export default async function HomePage() {
 
       {/* Main Interactive Explorer (Search, Filters, Grid) */}
       <ArchiveExplorer initialSeries={allSeries} />
+
+      {/* Cross-Link to Pulp Books Archive Banner */}
+      <PulpArchiveBanner />
 
     </div>
   );

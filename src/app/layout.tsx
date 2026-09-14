@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     default: "Die Suid-Afrikaanse Fotoverhaal Argief | fotoverhale.softcoverbooks.co.za",
     template: "%s | Fotoverhaal Argief",
   },
-  description: "’n Digitale bewaarplek vir die kyk-en-lees pulp-fenomeen van die 1960’s tot 1980’s in Suid-Afrika. 462 boekvoorblaaie, 111 reekse, historiese artikels en bibliografiese inligting.",
+  description: "’n Digitale bewaarplek vir die kyk-en-lees pulp-fenomeen van die 1960’s tot 1980’s in Suid-Afrika. 433 boekvoorblaaie, 111 reekse, historiese artikels en bibliografiese inligting.",
   keywords: [
     "fotoverhale", "kyk-en-lees", "Mark Condor", "Ruiter in Swart", "Grensvegter", 
     "Kid Colt", "Tessa", "Die Wit Tier", "Dr Conrad Brand", "Saal 10", 
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Die Suid-Afrikaanse Fotoverhaal Argief",
-    description: "’n Digitale bewaarplek vir die kyk-en-lees pulp-fenomeen van die 1960’s tot 1980’s in Suid-Afrika. 462 voorblaaie oor 111 reekse.",
+    description: "’n Digitale bewaarplek vir die kyk-en-lees pulp-fenomeen van die 1960’s tot 1980’s in Suid-Afrika. 433 voorblaaie oor 111 reekse.",
     url: "https://fotoverhale.softcoverbooks.co.za",
     siteName: "Suid-Afrikaanse Fotoverhaal Argief",
     images: [
