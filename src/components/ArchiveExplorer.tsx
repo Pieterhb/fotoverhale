@@ -26,7 +26,7 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<GenreCategory>("Alles");
   const [selectedLetter, setSelectedLetter] = useState<string>("Alles");
-  const [sortBy, setSortBy] = useState<"alphabetical" | "genre-language" | "issue" | "reverse">("alphabetical");
+  const [sortBy, setSortBy] = useState<"standard" | "alphabetical" | "issue" | "reverse">("standard");
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
   // Flatten all 111 series into individual book items (total 433 books)
@@ -136,19 +136,24 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
 
     // 4. Sorting
     const sorted = [...list].sort((a, b) => {
-      if (sortBy === "alphabetical") {
-        const titleDiff = a.seriesTitle.localeCompare(b.seriesTitle, "af");
-        if (titleDiff !== 0) return titleDiff;
-        return a.issueNumber - b.issueNumber;
-      }
-      if (sortBy === "genre-language") {
-        const genreDiff = a.genre.localeCompare(b.genre, "af");
-        if (genreDiff !== 0) return genreDiff;
-
+      if (sortBy === "standard") {
+        // 1st: Language (Afrikaans first, then Engels)
         const langRank = (lang: string) => (lang === "Afrikaans" ? 0 : 1);
         const langDiff = langRank(a.language) - langRank(b.language);
         if (langDiff !== 0) return langDiff;
 
+        // 2nd: Category (Alphabetical: Aksie & Avontuur -> Liefde & Romanse -> Medies & Hospitaal -> Speurder & Spioen -> Westerns)
+        const genreDiff = (a.genre || "").localeCompare(b.genre || "", "af");
+        if (genreDiff !== 0) return genreDiff;
+
+        // 3rd: Series Title (Alphabetical A–Z)
+        const titleDiff = (a.seriesTitle || "").localeCompare(b.seriesTitle || "", "af");
+        if (titleDiff !== 0) return titleDiff;
+
+        // 4th: Issue Number
+        return (a.issueNumber || 0) - (b.issueNumber || 0);
+      }
+      if (sortBy === "alphabetical") {
         const titleDiff = a.seriesTitle.localeCompare(b.seriesTitle, "af");
         if (titleDiff !== 0) return titleDiff;
         return a.issueNumber - b.issueNumber;
@@ -179,7 +184,7 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
     setSearchQuery("");
     setSelectedCategory("Alles");
     setSelectedLetter("Alles");
-    setSortBy("alphabetical");
+    setSortBy("standard");
     setVisibleCount(PAGE_SIZE);
   };
 
@@ -206,7 +211,7 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
 
         <div className="text-xs text-slate-muted hidden md:flex items-center gap-1.5 font-mono">
           <Info className="w-3.5 h-3.5 text-pulp-amber" />
-          <span>Gesorteer volgens A–Z Alfabetiese Indeks ({totalBooksCount} Voorblaaie)</span>
+          <span>Gesorteer volgens Taal &amp; Kategorie ({totalBooksCount} Voorblaaie)</span>
         </div>
       </div>
 
@@ -244,10 +249,10 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
               onChange={(e) => setSortBy(e.target.value as any)}
               className="bg-transparent text-paper text-xs focus:outline-none cursor-pointer py-1 font-medium flex-1 md:flex-none text-center md:text-left"
             >
-              <option value="alphabetical" className="bg-panel text-paper">Alfabeties (A–Z)</option>
-              <option value="genre-language" className="bg-panel text-paper">Genre &amp; Taal (A–Z)</option>
+              <option value="standard" className="bg-panel text-paper">Taal &amp; Kategorie (Standaard)</option>
+              <option value="alphabetical" className="bg-panel text-paper">Slegs Reeksnaam (A–Z)</option>
               <option value="issue" className="bg-panel text-paper">Uitgawe Nommer</option>
-              <option value="reverse" className="bg-panel text-paper">Alfabeties (Z–A)</option>
+              <option value="reverse" className="bg-panel text-paper">Slegs Reeksnaam (Z–A)</option>
             </select>
           </div>
         </div>
