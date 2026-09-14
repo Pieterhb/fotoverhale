@@ -49,7 +49,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="text-pulp-amber hover:underline font-semibold inline-flex items-center"
                 >
-                  P.D. Haasbroek (Pieter Daniel Haasbroek) <ArrowUpRight className="w-3 h-3 ml-0.5" />
+                  <span className="whitespace-nowrap">P.D. Haasbroek</span>&nbsp;(Pieter Daniel Haasbroek) <ArrowUpRight className="w-3 h-3 ml-0.5" />
                 </a>
               </p>
             </div>

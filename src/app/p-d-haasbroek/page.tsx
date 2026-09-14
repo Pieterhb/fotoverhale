@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     "South African pulp fiction",
     "FlickFuture",
     "HousePlanQuote",
-    "TheBlackPanther",
+    "The Black Panther",
     "Suid-Afrikaanse fotoverhale erfenis",
   ],
   alternates: {
