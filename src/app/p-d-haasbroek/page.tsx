@@ -113,6 +113,8 @@ const jsonLdProfile = {
       "https://www.pulpbooksarchive.co.za/",
       "https://pulpbooksarchive.co.za/p-d-haasbroek/",
       "https://softcoverbooks.co.za/",
+      "https://ebooks.softcoverbooks.co.za/",
+      "https://pod.softcoverbooks.co.za/",
       "https://fotoverhale.softcoverbooks.co.za/",
       "https://www.flickfuture.com/",
       "https://www.teepublic.com/user/theblackpanther",
@@ -157,14 +159,14 @@ const PROJECTS = [
     name: "PDF & Ebooks Softcover Books",
     badge: "Digitale Publikasies",
     description: "Digital softcover-book and ebook publishing project reviving historical South African works for modern readers.",
-    link: "https://softcoverbooks.co.za/",
+    link: "https://ebooks.softcoverbooks.co.za/",
     external: true,
   },
   {
     name: "POD Softcover Books",
     badge: "Print-on-Demand",
     description: "Print-on-demand publishing and vintage artwork restoration project.",
-    link: "https://softcoverbooks.co.za/",
+    link: "https://pod.softcoverbooks.co.za/",
     external: true,
   },
   {
@@ -206,7 +208,7 @@ const PROJECTS = [
 
 export default function PdHaasbroekPage() {
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-5 pb-16 space-y-10 sm:space-y-14">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-3.5 pb-6 space-y-10 sm:space-y-14">
       {/* Schema.org ProfilePage Structured Data */}
       <script
         type="application/ld+json"
@@ -321,7 +323,7 @@ export default function PdHaasbroekPage() {
               <strong>P.D. Haasbroek</strong>, wie se volle naam <strong>Pieter Daniel Haasbroek</strong> is, is ’n Suid-Afrikaanse skrywer, redakteur, uitgewer, digitale kunstenaar, onafhanklike toepassing-ontwikkelaar en jarelange versamelaar en bewaarder van Suid-Afrikaanse pulp- en sagtebandfiksie.
             </p>
             <p>
-              Vir meer as 30 jaar het Pieter Haasbroek Suid-Afrikaanse sagteband- en pulp-fiksieboeke versamel, nagevors, gedokumenteer en bewaar — veral die gewilde fiksie wat vanaf die 1950’s en 1960’s verskyn het. Sy omvattende bewaringswerk sluit in:
+              Vir meer as 30 jaar het Pieter Haasbroek Suid-Afrikaanse sagteband- en pulp-fiksieboeke versamel, nagevors, gedokumenteer en bewaar - veral die gewilde fiksie wat vanaf die 1950’s en 1960’s verskyn het. Sy omvattende bewaringswerk sluit in:
             </p>
             <ul className="list-disc list-inside space-y-1.5 pl-2 text-slate-300 font-sans text-xs sm:text-sm">
               <li>Identifisering en ontmaskering van skrywers en skuilname (pseudonieme).</li>

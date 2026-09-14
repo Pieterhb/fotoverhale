@@ -390,7 +390,7 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
 
           {/* Load More Button (Kliek hier vir meer) */}
           {hasMore ? (
-            <div className="flex flex-col items-center justify-center pt-6 pb-2 space-y-3">
+            <div className="flex flex-col items-center justify-center pt-4 pb-0 space-y-2">
               <button
                 onClick={() => setVisibleCount((prev) => prev + PAGE_SIZE)}
                 className="group px-8 py-4 rounded-xl bg-gradient-to-r from-pulp-amber to-amber-500 hover:from-amber-400 hover:to-pulp-amber text-graphite font-heading text-sm sm:text-base font-bold uppercase tracking-wider shadow-xl hover:shadow-pulp-amber/30 transition-all duration-200 flex items-center gap-3 hover:scale-105 active:scale-95 cursor-pointer"
