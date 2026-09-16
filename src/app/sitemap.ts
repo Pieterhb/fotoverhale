@@ -48,6 +48,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.9,
     },
+    {
+      url: `${BASE_URL}/privaatheidsbeleid`,
+      lastModified: currentDate,
+      changeFrequency: "yearly",
+      priority: 0.4,
+    },
+    {
+      url: `${BASE_URL}/terme-en-voorwaardes`,
+      lastModified: currentDate,
+      changeFrequency: "yearly",
+      priority: 0.4,
+    },
   ];
 
   // Dynamic series routes (111 series)

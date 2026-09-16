@@ -119,6 +119,24 @@ export default function Footer() {
               <Mail className="w-3.5 h-3.5 text-pulp-amber" />
               <span>Kontak die Argief</span>
             </a>
+
+            {/* Regskakel: Privaatheid & Terme */}
+            <div className="mt-4 space-y-1.5 border-t border-panel-border/60 pt-3">
+              <Link
+                href="/privaatheidsbeleid"
+                className="flex items-center gap-1.5 text-xs text-slate-muted hover:text-pulp-amber transition-colors"
+              >
+                <ShieldCheck className="w-3 h-3 text-pulp-amber/70 shrink-0" />
+                Privaatheidsbeleid
+              </Link>
+              <Link
+                href="/terme-en-voorwaardes"
+                className="flex items-center gap-1.5 text-xs text-slate-muted hover:text-pulp-amber transition-colors"
+              >
+                <ShieldCheck className="w-3 h-3 text-pulp-amber/70 shrink-0" />
+                Terme en Voorwaardes
+              </Link>
+            </div>
           </div>
 
         </div>
