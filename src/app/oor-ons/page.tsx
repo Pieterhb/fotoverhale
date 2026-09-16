@@ -3,7 +3,7 @@ import { Info, ShieldCheck, Mail, Users, BookOpen, ExternalLink, Heart, Send } f
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Oor Ons & Erkenning | Suid-Afrikaanse Fotoverhaal Argief",
+  title: "Oor Ons & Erkenning",
   description: "Erkenning aan Pieter Haasbroek, Koos Papenfus en die pioniers wat hierdie Suid-Afrikaanse fotoverhaal erfenis digitaal bewaar het.",
   alternates: {
     canonical: "https://fotoverhale.softcoverbooks.co.za/oor-ons",
@@ -13,11 +13,20 @@ export const metadata: Metadata = {
     description: "Die bewaringsgeskiedenis en erkenning aan Pieter Haasbroek, Koos Papenfus, Sven Barsby en Carol Hardijzer.",
     url: "https://fotoverhale.softcoverbooks.co.za/oor-ons",
     type: "website",
+    images: [
+      {
+        url: "https://fotoverhale.softcoverbooks.co.za/icon-512.png",
+        width: 512,
+        height: 512,
+        alt: "Suid-Afrikaanse Fotoverhaal Argief",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Oor Ons & Erkenning | Fotoverhaal Argief",
     description: "Ontdek die bewaringsprojek en die mense agter die Suid-Afrikaanse Fotoverhaal Argief.",
+    images: ["https://fotoverhale.softcoverbooks.co.za/icon-512.png"],
   },
 };
 
@@ -210,9 +219,9 @@ export default function OorOnsPage() {
 
       {/* Cloudflare & Argief Tegnologie Nota */}
       <section className="text-xs text-slate-muted border-t border-panel-border pt-6 space-y-2">
-        <h4 className="font-heading text-sm text-paper uppercase">
+        <h3 className="font-heading text-sm text-paper uppercase">
           Tegnologie & Toeganklikheid
-        </h4>
+        </h3>
         <p className="leading-relaxed font-serif">
           Hierdie argief is gebou met Next.js en Tailwind CSS, en word gehuisves met behulp van Cloudflare se globale inhoudsnetwerk onder die subdomein <code>fotoverhale.softcoverbooks.co.za</code>. Alle data en hoë-resolusie voorblaaie word veilig bewaar en blitsvinnig aan lesers wêreldwyd bedien.
         </p>

@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import { BookOpen, History, Info, Compass, Sparkles, UserCheck } from "lucide-react";
 

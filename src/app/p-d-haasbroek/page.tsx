@@ -22,7 +22,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "P.D. Haasbroek (Pieter Daniel Haasbroek) | Skrywer, Uitgewer, Digitale Kunstenaar & Bewaarder",
+  title: "P.D. Haasbroek - Biografiese Profiel",
   description:
     "Amptelike biografiese profiel van P.D. Haasbroek (Pieter Daniel Haasbroek) – Suid-Afrikaanse skrywer, uitgewer, digitale kunstenaar, toepassingontwikkelaar en bewaarder van Suid-Afrikaanse pulp-fiksie en fotoverhale.",
   keywords: [
@@ -270,7 +270,7 @@ export default function PdHaasbroekPage() {
             <Library className="w-5 h-5" />
             <span className="font-heading text-xs uppercase tracking-wider text-slate-400">Erfenisbewaring</span>
           </div>
-          <h3 className="font-heading text-lg text-paper font-bold uppercase">30+ Jaar</h3>
+          <div className="font-heading text-lg text-paper font-bold uppercase">30+ Jaar</div>
           <p className="text-xs text-slate-muted leading-relaxed font-serif">
             Toegewyde versameling, navorsing en digitalisering van Suid-Afrikaanse sagteband- en fotoverhaal-erfenis sedert die 1990's.
           </p>
@@ -281,7 +281,7 @@ export default function PdHaasbroekPage() {
             <BookOpen className="w-5 h-5" />
             <span className="font-heading text-xs uppercase tracking-wider text-slate-400">Uitgewery &amp; Boeke</span>
           </div>
-          <h3 className="font-heading text-lg text-paper font-bold uppercase">Treasure Chest</h3>
+          <div className="font-heading text-lg text-paper font-bold uppercase">Treasure Chest</div>
           <p className="text-xs text-slate-muted leading-relaxed font-serif">
             Heruitgawes, redigering, vertaling, manuskrip voorbereiding en nuwe omslagontwerpe vir seldsame historiese werke.
           </p>
@@ -292,7 +292,7 @@ export default function PdHaasbroekPage() {
             <Palette className="w-5 h-5" />
             <span className="font-heading text-xs uppercase tracking-wider text-slate-400">Digitale Kuns</span>
           </div>
-          <h3 className="font-heading text-lg text-paper font-bold uppercase">Duisende Kunswerke</h3>
+          <div className="font-heading text-lg text-paper font-bold uppercase">Duisende Kunswerke</div>
           <p className="text-xs text-slate-muted leading-relaxed font-serif">
             Professionele digitale kuns, drukontwerpe (POD), illustrasies en vintage-boekvoorblad herstelwerk en nuwe voorblaaie.
           </p>
@@ -303,7 +303,7 @@ export default function PdHaasbroekPage() {
             <GraduationCap className="w-5 h-5" />
             <span className="font-heading text-xs uppercase tracking-wider text-slate-400">Akademies</span>
           </div>
-          <h3 className="font-heading text-lg text-paper font-bold uppercase">M.Sc. Agric. (2006)</h3>
+          <div className="font-heading text-lg text-paper font-bold uppercase">M.Sc. Agric. (2006)</div>
           <p className="text-xs text-slate-muted leading-relaxed font-serif">
             Universiteit van die Vrystaat – Navorsing oor die donsige skimmel waarskuwingsmodel vir die Wes-Kaap.
           </p>

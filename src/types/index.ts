@@ -2,6 +2,7 @@ export interface Issue {
   number: number;
   title: string;
   image?: string | null;
+  alt?: string;
 }
 
 export interface Series {
@@ -16,6 +17,7 @@ export interface Series {
   cover_image: string | null;
   aliases?: string[];
   issues: Issue[];
+  alt?: string;
 }
 
 export interface BookItem {
@@ -32,6 +34,7 @@ export interface BookItem {
   seriesDescription?: string;
   totalCoversInSeries: number;
   aliases?: string[];
+  alt?: string;
 }
 
 export type GenreCategory = 

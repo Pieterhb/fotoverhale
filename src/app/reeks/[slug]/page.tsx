@@ -3,6 +3,7 @@ import path from "path";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { Series } from "@/types";
+import { generateCleanDescription } from "@/lib/seo-helpers";
 import SeriesDetailClient from "@/components/SeriesDetailClient";
 
 async function getFotoverhaleData(): Promise<Series[]> {
@@ -31,7 +32,7 @@ export async function generateMetadata({
 
   if (!series) {
     return {
-      title: "Reeks Nie Gevind Nie | Suid-Afrikaanse Fotoverhaal Argief",
+      title: "Reeks Nie Gevind Nie",
     };
   }
 
@@ -39,12 +40,12 @@ export async function generateMetadata({
     ? `https://fotoverhale.softcoverbooks.co.za${series.cover_image}`
     : "https://fotoverhale.softcoverbooks.co.za/icon-512.png";
 
-  const cleanDescription = series.description
-    ? `${series.description.slice(0, 155).trim()}...`
-    : `Ontdek die gewilde Suid-Afrikaanse fotoverhaal-reeks ${series.title} (${series.genre}, ${series.language}) met ${series.total_covers} gekatalogiseerde voorblaaie.`;
+  const cleanDescription = generateCleanDescription(series);
 
   return {
-    title: `${series.title} (${series.language} Fotoverhaal) | Uitgawes & Voorblaaie`,
+    title: series.title.length > 25
+      ? series.title
+      : `${series.title} (${series.language})`,
     description: cleanDescription,
     keywords: [
       series.title,
@@ -60,7 +61,7 @@ export async function generateMetadata({
       canonical: `https://fotoverhale.softcoverbooks.co.za/reeks/${series.id}`,
     },
     openGraph: {
-      title: `${series.title} - Suid-Afrikaanse Fotoverhaal Argief`,
+      title: `${series.title} - Voorblaaie & Argief`,
       description: cleanDescription,
       url: `https://fotoverhale.softcoverbooks.co.za/reeks/${series.id}`,
       type: "website",
@@ -75,7 +76,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${series.title} (${series.language} Fotoverhaal)`,
+      title: `${series.title} (${series.language}) - Voorblaaie`,
       description: cleanDescription,
       images: [fullImageUrl],
     },
@@ -101,7 +102,7 @@ export default async function SeriesPage({
         "@type": "BookSeries",
         "@id": `https://fotoverhale.softcoverbooks.co.za/reeks/${series.id}#series`,
         "name": series.title,
-        "description": series.description,
+        "description": series.description || generateCleanDescription(series),
         "genre": series.genre,
         "inLanguage": series.language === "Afrikaans" ? "af" : "en",
         "publisher": {
@@ -120,6 +121,12 @@ export default async function SeriesPage({
           : undefined,
         "url": `https://fotoverhale.softcoverbooks.co.za/reeks/${series.id}`,
         "numberOfItems": series.total_covers,
+        "hasPart": (series.issues || []).map((iss) => ({
+          "@type": "PublicationIssue",
+          "issueNumber": iss.number,
+          "name": iss.title,
+          "image": iss.image ? `https://fotoverhale.softcoverbooks.co.za${iss.image}` : undefined,
+        })),
       },
       {
         "@type": "BreadcrumbList",
@@ -133,12 +140,6 @@ export default async function SeriesPage({
           {
             "@type": "ListItem",
             "position": 2,
-            "name": series.genre,
-            "item": "https://fotoverhale.softcoverbooks.co.za/#gallery",
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
             "name": series.title,
             "item": `https://fotoverhale.softcoverbooks.co.za/reeks/${series.id}`,
           },

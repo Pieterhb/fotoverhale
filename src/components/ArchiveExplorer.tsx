@@ -49,6 +49,7 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
             seriesDescription: s.description,
             totalCoversInSeries: s.total_covers || s.issues.length,
             aliases: s.aliases,
+            alt: iss.alt,
           });
         }
       } else {
@@ -66,6 +67,7 @@ export default function ArchiveExplorer({ initialSeries }: ArchiveExplorerProps)
           seriesDescription: s.description,
           totalCoversInSeries: s.total_covers || 1,
           aliases: s.aliases,
+          alt: s.alt,
         });
       }
     }

@@ -229,12 +229,6 @@ def scrape_all():
                     continue
                     
                 full_img_url = urllib.parse.urljoin(url, src)
-                # Local destination
-                local_dir = os.path.join("public", "covers", slug)
-                clean_img_name = re.sub(r'[^a-zA-Z0-9_\.-]', '_', img_name)
-                dest_path = os.path.join(local_dir, clean_img_name)
-                web_path = f"/covers/{slug}/{clean_img_name}"
-                
                 alt_title = clean_text(img.get('alt', ''))
                 # Extract issue number from filename or alt
                 num_match = re.search(r'(\d+)', img_name)
@@ -242,6 +236,25 @@ def scrape_all():
                 
                 issue_title = alt_title or f"Uitgawe #{img_issue_num}"
                 issue_title = re.sub(rf'^{re.escape(title)}\s*-\s*', '', issue_title, flags=re.IGNORECASE)
+                
+                # Check master table language
+                master_info_pre = master_data.get(slug, {})
+                lang_pre = determine_language(title, master_info_pre.get("language")).lower()
+                
+                # Clean slugs for SEO-friendly filename: <series>_<title>_<language>.jpg
+                series_slug = slugify(title).replace('-', '_')
+                clean_title_slug = slugify(issue_title).replace('-', '_') if issue_title and issue_title.lower() not in ['geen titel', 'no title'] else f"uitgawe_{img_issue_num}"
+                title_slug = f"{img_issue_num}_{clean_title_slug}" if img_issue_num and not clean_title_slug.startswith(f"{img_issue_num}_") else clean_title_slug
+                if len(title_slug) > 50:
+                    title_slug = title_slug[:50].rstrip('_')
+                
+                ext = os.path.splitext(img_name)[1].lower() or ".jpg"
+                clean_img_name = f"{series_slug}_{title_slug}_{lang_pre}{ext}"
+                
+                # Local destination
+                local_dir = os.path.join("public", "covers", slug)
+                dest_path = os.path.join(local_dir, clean_img_name)
+                web_path = f"/covers/{slug}/{clean_img_name}"
                 
                 series_covers.append({
                     "number": img_issue_num,

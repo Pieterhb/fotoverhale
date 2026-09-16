@@ -3,6 +3,7 @@ import path from "path";
 import Link from "next/link";
 import { BookOpen, Layers, Calendar, Sparkles, ShieldCheck, ArrowDown } from "lucide-react";
 import { Series } from "@/types";
+import { generateCoverAlt } from "@/lib/seo-helpers";
 import ArchiveExplorer from "@/components/ArchiveExplorer";
 import PromoBanner from "@/components/PromoBanner";
 import PulpArchiveBanner from "@/components/PulpArchiveBanner";
@@ -38,7 +39,7 @@ export default async function HomePage() {
     "mainEntity": {
       "@type": "ItemList",
       "numberOfItems": allSeries.length,
-      "itemListElement": allSeries.slice(0, 50).map((s, idx) => ({
+      "itemListElement": allSeries.map((s, idx) => ({
         "@type": "ListItem",
         "position": idx + 1,
         "name": s.title,
@@ -159,9 +160,9 @@ export default async function HomePage() {
         {/* Featured Mini Showcase on Desktop */}
         {spotlightSeries.length > 0 && (
           <div className="hidden lg:grid grid-cols-4 gap-3 mt-5 pt-5 border-t border-panel-border">
-            <div className="col-span-4 text-xs font-heading uppercase text-pulp-amber tracking-widest mb-1 text-center">
+            <h2 className="col-span-4 text-xs font-heading uppercase text-pulp-amber tracking-widest mb-1 text-center">
               Gewilde Reekse in die Kollig:
-            </div>
+            </h2>
             {spotlightSeries.slice(0, 4).map((s) => (
               <Link
                 key={s.id}
@@ -171,14 +172,18 @@ export default async function HomePage() {
                 <div className="w-12 h-16 rounded overflow-hidden bg-charcoal shrink-0 border border-panel-border">
                   <img
                     src={s.cover_image!}
-                    alt={s.title}
+                    alt={s.alt || generateCoverAlt(s)}
+                    width={48}
+                    height={64}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                 </div>
                 <div className="min-w-0">
-                  <h4 className="font-heading text-sm font-bold text-paper truncate uppercase group-hover:text-pulp-amber transition-colors">
+                  <h3 className="font-heading text-sm font-bold text-paper truncate uppercase group-hover:text-pulp-amber transition-colors">
                     {s.title}
-                  </h4>
+                  </h3>
                   <span className="text-[11px] text-slate-muted block">
                     {s.total_covers} {s.total_covers === 1 ? "Voorblad" : "Voorblaaie"}
                   </span>

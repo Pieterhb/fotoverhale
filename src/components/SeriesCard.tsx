@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { BookOpen, Layers, Globe, Search } from "lucide-react";
 import { Series } from "@/types";
+import { generateCoverAlt } from "@/lib/seo-helpers";
 
 interface SeriesCardProps {
   series: Series;
@@ -38,7 +39,10 @@ export default function SeriesCard({ series }: SeriesCardProps) {
         {hasCover && series.cover_image ? (
           <img
             src={series.cover_image}
-            alt={series.title}
+            alt={series.alt || generateCoverAlt(series)}
+            width={300}
+            height={400}
+            decoding="async"
             onError={() => setImgError(true)}
             className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
             loading="lazy"

@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { BookOpen, Layers } from "lucide-react";
 import { BookItem } from "@/types";
+import { generateIssueAlt } from "@/lib/seo-helpers";
 
 interface BookCardProps {
   book: BookItem;
@@ -45,7 +46,10 @@ export default function BookCard({ book }: BookCardProps) {
         {hasCover ? (
           <img
             src={book.image}
-            alt={`${book.seriesTitle} - ${book.issueTitle || book.issueNumber}`}
+            alt={book.alt || generateIssueAlt(book.seriesTitle, { number: book.issueNumber, title: book.issueTitle, alt: book.alt }, book.language, book.genre, book.publisher)}
+            width={300}
+            height={400}
+            decoding="async"
             onError={() => setImgError(true)}
             className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
             loading="lazy"

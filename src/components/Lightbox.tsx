@@ -111,7 +111,7 @@ export default function Lightbox({
         {currentIssue.image ? (
           <img
             src={currentIssue.image}
-            alt={currentIssue.title}
+            alt={currentIssue.alt || `Volskerm voorblad van ${seriesTitle} Uitgawe #${currentIssue.number}: ${currentIssue.title}`}
             className="max-w-full max-h-[78vh] object-contain rounded shadow-2xl border border-panel-border"
           />
         ) : (

@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, BookOpen, Layers, Globe, Building, FileText, Maximize2, Share2 } from "lucide-react";
 import { Series } from "@/types";
+import { generateCoverAlt, generateIssueAlt } from "@/lib/seo-helpers";
 import Lightbox from "@/components/Lightbox";
 import PulpArchiveBanner from "@/components/PulpArchiveBanner";
 
@@ -51,7 +52,11 @@ export default function SeriesDetailClient({ series }: SeriesDetailClientProps) 
               {series.cover_image ? (
                 <img
                   src={series.cover_image}
-                  alt={`${series.title} - ${series.genre} Fotoverhaal Voorblad`}
+                  alt={series.alt || generateCoverAlt(series)}
+                  width={450}
+                  height={600}
+                  decoding="async"
+                  fetchPriority="high"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               ) : (
@@ -129,10 +134,10 @@ export default function SeriesDetailClient({ series }: SeriesDetailClientProps) 
 
             {/* Description & Koos Papenfus's historical notes */}
             <div className="space-y-4">
-              <h3 className="font-heading text-lg text-paper uppercase tracking-wider flex items-center gap-2">
+              <h2 className="font-heading text-lg text-paper uppercase tracking-wider flex items-center gap-2">
                 <FileText className="w-4 h-4 text-pulp-amber" />
                 Reeks-Agtergrond & Historiese Aantekeninge
-              </h3>
+              </h2>
               <div className="text-sm text-slate-muted/95 leading-relaxed space-y-3 font-serif bg-graphite/50 p-5 rounded-xl border border-panel-border">
                 {series.description ? (
                   series.description.split("\n\n").map((para, idx) => (
@@ -186,7 +191,10 @@ export default function SeriesDetailClient({ series }: SeriesDetailClientProps) 
                   {issue.image ? (
                     <img
                       src={issue.image}
-                      alt={`${series.title} - Uitgawe #${issue.number || index + 1}: ${issue.title || series.title}`}
+                      alt={issue.alt || generateIssueAlt(series.title, issue, series.language, series.genre, series.publisher)}
+                      width={250}
+                      height={333}
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       loading="lazy"
                     />
@@ -216,9 +224,9 @@ export default function SeriesDetailClient({ series }: SeriesDetailClientProps) 
         ) : (
           <div className="text-center py-12 bg-panel rounded-xl border border-panel-border p-6">
             <BookOpen className="w-12 h-12 text-slate-muted/40 mx-auto mb-3" />
-            <h4 className="font-heading text-lg text-paper uppercase">
+            <h3 className="font-heading text-lg text-paper uppercase">
               Geen individuele voorblaaie tans beskikbaar nie
-            </h4>
+            </h3>
             <p className="text-xs text-slate-muted max-w-md mx-auto mt-1">
               Hierdie reeks is in die historiese meestertabel opgeteken. As u 'n eksemplaar van hierdie fotoverhaal besit, kontak ons gerus om 'n hoë-resolusie skandering by te dra.
             </p>

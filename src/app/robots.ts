@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
     },
     sitemap: "https://fotoverhale.softcoverbooks.co.za/sitemap.xml",
-    host: "https://fotoverhale.softcoverbooks.co.za",
+    host: "fotoverhale.softcoverbooks.co.za",
   };
 }

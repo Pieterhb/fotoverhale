@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -6,7 +7,7 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   metadataBase: new URL("https://fotoverhale.softcoverbooks.co.za"),
   title: {
-    default: "Die Suid-Afrikaanse Fotoverhaal Argief | fotoverhale.softcoverbooks.co.za",
+    default: "Suid-Afrikaanse Fotoverhaal Argief (1960–1985)",
     template: "%s | Fotoverhaal Argief",
   },
   description: "’n Digitale bewaarplek vir die kyk-en-lees pulp-fenomeen van die 1960’s tot 1980’s in Suid-Afrika. 433 boekvoorblaaie, 111 reekse, historiese artikels en bibliografiese inligting.",
@@ -81,6 +82,11 @@ const jsonLdWebsite = {
       "name": "Die Suid-Afrikaanse Fotoverhaal Argief",
       "description": "Digitale bewaarplek en navorsingsargief vir die Suid-Afrikaanse fotoverhaal-era (1960–1985).",
       "inLanguage": "af",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://fotoverhale.softcoverbooks.co.za/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
       "creator": {
         "@id": "https://pulpbooksarchive.co.za/p-d-haasbroek/#person"
       },
@@ -133,12 +139,14 @@ export default function RootLayout({
   return (
     <html lang="af" className="dark">
       <head>
-        {/* Google tag (gtag.js) */}
-        <script
-          async
+        {/* Google tag (gtag.js) via Next.js non-blocking Script */}
+        <Script
+          strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-FK83ZPEFDE"
         />
-        <script
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];

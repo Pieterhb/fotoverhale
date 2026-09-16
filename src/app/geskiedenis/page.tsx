@@ -3,7 +3,7 @@ import { History, BookOpen, Calendar, Tv, Users, Award, ShieldAlert, ArrowRight 
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Die Geskiedenis van die Suid-Afrikaanse Fotoverhaal | Koos Papenfus",
+  title: "Geskiedenis van die Fotoverhaal | Koos Papenfus",
   description: "Die volledige geskiedenis van die fotoverhaal in Suid-Afrika: Mark Condor, Ruiter in Swart, Grensvegter, en die impak van TV in 1976. Deur Koos Papenfus.",
   alternates: {
     canonical: "https://fotoverhale.softcoverbooks.co.za/geskiedenis",
@@ -14,11 +14,20 @@ export const metadata: Metadata = {
     url: "https://fotoverhale.softcoverbooks.co.za/geskiedenis",
     type: "article",
     authors: ["Koos Papenfus", "Pieter Haasbroek"],
+    images: [
+      {
+        url: "https://fotoverhale.softcoverbooks.co.za/icon-512.png",
+        width: 512,
+        height: 512,
+        alt: "Die Geskiedenis van die Suid-Afrikaanse Fotoverhaal",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Die Geskiedenis van die Suid-Afrikaanse Fotoverhaal | Koos Papenfus",
+    title: "Geskiedenis van die Fotoverhaal | Koos Papenfus",
     description: "Die volledige historiese oorsig van die fotoverhaal in Suid-Afrika deur kenner Koos Papenfus.",
+    images: ["https://fotoverhale.softcoverbooks.co.za/icon-512.png"],
   },
 };
 
@@ -28,6 +37,9 @@ const jsonLdArticle = {
   "headline": "Die Geskiedenis van die Suid-Afrikaanse Fotoverhaal",
   "description": "Die volledige geskiedenis van die fotoverhaal in Suid-Afrika: Mark Condor, Ruiter in Swart, Grensvegter, en die impak van TV in 1976.",
   "inLanguage": "af",
+  "datePublished": "2024-01-01",
+  "dateModified": "2026-09-16",
+  "image": ["https://fotoverhale.softcoverbooks.co.za/icon-512.png"],
   "author": [
     {
       "@type": "Person",
@@ -41,7 +53,8 @@ const jsonLdArticle = {
   "publisher": {
     "@type": "Organization",
     "name": "Suid-Afrikaanse Fotoverhaal Argief",
-    "url": "https://fotoverhale.softcoverbooks.co.za"
+    "url": "https://fotoverhale.softcoverbooks.co.za",
+    "logo": "https://fotoverhale.softcoverbooks.co.za/icon-512.png"
   },
   "mainEntityOfPage": "https://fotoverhale.softcoverbooks.co.za/geskiedenis"
 };
@@ -135,9 +148,9 @@ export default function GeskiedenisPage() {
           </p>
 
           <div className="bg-graphite/60 border-l-4 border-pulp-amber p-4 rounded-r-lg my-4 not-prose">
-            <h4 className="font-heading text-paper uppercase text-base mb-1">
+            <h3 className="font-heading text-paper uppercase text-base mb-1">
               Die Legende van Ben Brandt (Ruiter in Swart)
-            </h4>
+            </h3>
             <p className="text-xs text-slate-muted leading-relaxed font-serif">
               Geklee in swart van kop tot tone, was hy ’n ZARP-man (lid van die ou Zuid-Afrikaansche Republiek Polisie) en ’n persoonlike vriend van president Paul Kruger. Met sy twee pistole gerig vir die berugte "crossdraw", sy swart perd Satan en sy wolfhond, het hy geregtigheid in die goudvelde en laeveld laat geskied. Die rol is vir jare lank meesterlik vertolk deur <strong>Danie van Rensburg</strong>, bekend onder sy akteursnaam <strong>Vonk de Ridder</strong>.
             </p>
