@@ -67,13 +67,18 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/reeks" className="text-pulp-amber hover:underline font-semibold transition-colors">
+                  Alle Reekse Indeks (111 Reekse)
+                </Link>
+              </li>
+              <li>
                 <Link href="/geskiedenis" className="hover:text-pulp-amber transition-colors">
                   Geskiedenis (Koos Papenfus)
                 </Link>
               </li>
               <li>
                 <Link href="/oor-ons" className="hover:text-pulp-amber transition-colors">
-                  Oor die Argief & Erkenning
+                  Oor die Argief &amp; Erkenning
                 </Link>
               </li>
               <li>
@@ -102,6 +107,27 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
+
+            <div className="mt-4 pt-3 border-t border-panel-border/60">
+              <span className="text-[11px] font-heading uppercase text-slate-400 tracking-wider block mb-2">
+                Gewilde Reekse:
+              </span>
+              <div className="flex flex-wrap gap-x-2 gap-y-1 text-xs text-slate-400">
+                <Link href="/reeks/mark-condor" className="hover:text-pulp-amber">Mark Condor</Link>
+                <span>•</span>
+                <Link href="/reeks/ruiter-in-swart" className="hover:text-pulp-amber">Ruiter in Swart</Link>
+                <span>•</span>
+                <Link href="/reeks/grensvegter" className="hover:text-pulp-amber">Grensvegter</Link>
+                <span>•</span>
+                <Link href="/reeks/tessa" className="hover:text-pulp-amber">Tessa</Link>
+                <span>•</span>
+                <Link href="/reeks/kid-colt" className="hover:text-pulp-amber">Kid Colt</Link>
+                <span>•</span>
+                <Link href="/reeks/sikloon" className="hover:text-pulp-amber">Sikloon</Link>
+                <span>•</span>
+                <Link href="/reeks/uit-die-dagboek-van-n-psigiater" className="hover:text-pulp-amber">Dagboek van 'n Psigiater</Link>
+              </div>
+            </div>
           </div>
 
           {/* Erkenning & Kontak */}

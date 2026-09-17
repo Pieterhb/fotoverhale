@@ -8,6 +8,17 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://fotoverhale.softcoverbooks.co.za/geskiedenis",
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "Die Geskiedenis van die Suid-Afrikaanse Fotoverhaal",
     description: "Die volledige geskiedenis van die fotoverhaal in Suid-Afrika: Mark Condor, Ruiter in Swart, Grensvegter, en die koms van TV.",

@@ -3,7 +3,7 @@ import path from "path";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { Series } from "@/types";
-import { generateCleanDescription } from "@/lib/seo-helpers";
+import { generateCleanDescription, getSeriesContextualParagraphs } from "@/lib/seo-helpers";
 import SeriesDetailClient from "@/components/SeriesDetailClient";
 
 async function getFotoverhaleData(): Promise<Series[]> {
@@ -33,6 +33,10 @@ export async function generateMetadata({
   if (!series) {
     return {
       title: "Reeks Nie Gevind Nie",
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
 
@@ -43,9 +47,7 @@ export async function generateMetadata({
   const cleanDescription = generateCleanDescription(series);
 
   return {
-    title: series.title.length > 25
-      ? series.title
-      : `${series.title} (${series.language})`,
+    title: `${series.title} – ${series.genre} Fotoverhaal (${series.language})`,
     description: cleanDescription,
     keywords: [
       series.title,
@@ -60,8 +62,19 @@ export async function generateMetadata({
     alternates: {
       canonical: `https://fotoverhale.softcoverbooks.co.za/reeks/${series.id}`,
     },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     openGraph: {
-      title: `${series.title} - Voorblaaie & Argief`,
+      title: `${series.title} – Voorblaaie & Argief | Fotoverhaal Argief`,
       description: cleanDescription,
       url: `https://fotoverhale.softcoverbooks.co.za/reeks/${series.id}`,
       type: "website",
@@ -76,7 +89,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${series.title} (${series.language}) - Voorblaaie`,
+      title: `${series.title} (${series.language}) – Voorblaaie`,
       description: cleanDescription,
       images: [fullImageUrl],
     },
@@ -95,6 +108,21 @@ export default async function SeriesPage({
     notFound();
   }
 
+  const contextualParagraphs = getSeriesContextualParagraphs(series);
+
+  // Find 4 related series in same genre (or fallback to other popular series)
+  const relatedSeries = allSeries
+    .filter((s) => s.id !== series.id && s.genre === series.genre)
+    .slice(0, 5);
+
+  const finalRelated =
+    relatedSeries.length >= 3
+      ? relatedSeries
+      : [
+          ...relatedSeries,
+          ...allSeries.filter((s) => s.id !== series.id && !relatedSeries.some((r) => r.id === s.id)).slice(0, 5 - relatedSeries.length),
+        ];
+
   const jsonLdSeries = {
     "@context": "https://schema.org",
     "@graph": [
@@ -102,7 +130,7 @@ export default async function SeriesPage({
         "@type": "BookSeries",
         "@id": `https://fotoverhale.softcoverbooks.co.za/reeks/${series.id}#series`,
         "name": series.title,
-        "description": series.description || generateCleanDescription(series),
+        "description": generateCleanDescription(series),
         "genre": series.genre,
         "inLanguage": series.language === "Afrikaans" ? "af" : "en",
         "publisher": {
@@ -140,6 +168,12 @@ export default async function SeriesPage({
           {
             "@type": "ListItem",
             "position": 2,
+            "name": "Reekse",
+            "item": "https://fotoverhale.softcoverbooks.co.za/reeks",
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
             "name": series.title,
             "item": `https://fotoverhale.softcoverbooks.co.za/reeks/${series.id}`,
           },
@@ -156,7 +190,12 @@ export default async function SeriesPage({
           __html: JSON.stringify(jsonLdSeries),
         }}
       />
-      <SeriesDetailClient series={series} />
+      <SeriesDetailClient
+        series={series}
+        relatedSeries={finalRelated}
+        contextualParagraphs={contextualParagraphs}
+      />
     </>
   );
 }
+

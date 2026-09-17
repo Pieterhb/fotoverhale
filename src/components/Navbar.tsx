@@ -38,6 +38,14 @@ export default function Navbar() {
             </Link>
 
             <Link
+              href="/reeks"
+              className="flex-1 sm:flex-initial flex items-center justify-center space-x-0.5 sm:space-x-1 px-1 sm:px-1.5 md:px-2.5 lg:px-3 py-1 sm:py-1.5 rounded-md text-paper-muted hover:text-paper hover:bg-panel bg-panel/50 sm:bg-transparent border border-panel-border sm:border-transparent transition-all text-center min-w-0"
+            >
+              <BookOpen className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-pulp-amber shrink-0" />
+              <span className="font-heading tracking-tight sm:tracking-tight md:tracking-normal lg:tracking-wide uppercase text-[10px] sm:text-[11px] md:text-xs lg:text-sm leading-tight whitespace-nowrap">Reekse</span>
+            </Link>
+
+            <Link
               href="/geskiedenis"
               className="flex-1 sm:flex-initial flex items-center justify-center space-x-0.5 sm:space-x-1 px-1 sm:px-1.5 md:px-2.5 lg:px-3 py-1 sm:py-1.5 rounded-md text-paper-muted hover:text-paper hover:bg-panel bg-panel/50 sm:bg-transparent border border-panel-border sm:border-transparent transition-all text-center min-w-0"
             >

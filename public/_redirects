@@ -1,0 +1,8 @@
+# Trailing slash 301 redirects for Cloudflare Pages (Enforce non-trailing slash canonicals)
+/geskiedenis/         /geskiedenis           301
+/oor-ons/             /oor-ons               301
+/p-d-haasbroek/       /p-d-haasbroek         301
+/privaatheidsbeleid/  /privaatheidsbeleid    301
+/terme-en-voorwaardes/ /terme-en-voorwaardes 301
+/reeks/               /reeks                 301
+/reeks/:slug/         /reeks/:slug           301

@@ -1,12 +1,33 @@
 import fs from "fs";
 import path from "path";
 import Link from "next/link";
+import { Metadata } from "next";
 import { BookOpen, Layers, Calendar, Sparkles, ShieldCheck, ArrowDown } from "lucide-react";
 import { Series } from "@/types";
 import { generateCoverAlt } from "@/lib/seo-helpers";
 import ArchiveExplorer from "@/components/ArchiveExplorer";
 import PromoBanner from "@/components/PromoBanner";
 import PulpArchiveBanner from "@/components/PulpArchiveBanner";
+
+export const metadata: Metadata = {
+  title: "Suid-Afrikaanse Fotoverhaal Argief (1960–1985)",
+  description:
+    "’n Digitale bewaarplek vir die kyk-en-lees pulp-fenomeen van die 1960’s tot 1980’s in Suid-Afrika. 433 boekvoorblaaie, 111 reekse, historiese artikels en bibliografiese inligting.",
+  alternates: {
+    canonical: "https://fotoverhale.softcoverbooks.co.za",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
 
 async function getFotoverhaleData(): Promise<Series[]> {
   const filePath = path.join(process.cwd(), "data", "fotoverhale.json");
@@ -138,18 +159,26 @@ export default async function HomePage() {
           </div>
 
           {/* Action CTAs */}
-          <div className="flex flex-wrap justify-center gap-4 pt-2">
+          <div className="flex flex-wrap justify-center gap-3 pt-2">
             <a
               href="#gallery"
-              className="inline-flex items-center space-x-2 bg-pulp-amber hover:bg-pulp-amber-hover text-graphite font-heading text-sm font-bold uppercase tracking-wider px-6 py-3 rounded-lg shadow-lg hover:shadow-pulp-amber transition-all"
+              className="inline-flex items-center space-x-2 bg-pulp-amber hover:bg-pulp-amber-hover text-graphite font-heading text-sm font-bold uppercase tracking-wider px-5 py-3 rounded-lg shadow-lg hover:shadow-pulp-amber transition-all"
             >
               <span>Verken die Gallery</span>
               <ArrowDown className="w-4 h-4" />
             </a>
 
             <Link
+              href="/reeks"
+              className="inline-flex items-center space-x-2 bg-panel hover:bg-panel-border border border-pulp-amber/40 text-paper hover:text-pulp-amber font-heading text-sm font-medium uppercase tracking-wider px-5 py-3 rounded-lg transition-colors"
+            >
+              <BookOpen className="w-4 h-4 text-pulp-amber" />
+              <span>Blaai al 111 Reekse</span>
+            </Link>
+
+            <Link
               href="/geskiedenis"
-              className="inline-flex items-center space-x-2 bg-panel hover:bg-panel-border border border-panel-border text-paper font-heading text-sm font-medium uppercase tracking-wider px-6 py-3 rounded-lg transition-colors"
+              className="inline-flex items-center space-x-2 bg-panel hover:bg-panel-border border border-panel-border text-paper font-heading text-sm font-medium uppercase tracking-wider px-5 py-3 rounded-lg transition-colors"
             >
               <span>Lees die Geskiedenis</span>
             </Link>

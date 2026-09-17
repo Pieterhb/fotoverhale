@@ -3,14 +3,27 @@ import { Info, ShieldCheck, Mail, Users, BookOpen, ExternalLink, Heart, Send } f
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Oor Ons & Erkenning",
-  description: "Erkenning aan Pieter Haasbroek, Koos Papenfus en die pioniers wat hierdie Suid-Afrikaanse fotoverhaal erfenis digitaal bewaar het.",
+  title: "Oor Ons & Erkenning | Bewaring van Fotoverhale",
+  description:
+    "Die bewaringsgeskiedenis en erkenning aan Pieter Haasbroek, Koos Papenfus, Sven Barsby en navorsers wat meer as 30 jaar gewy het aan die digitale bewaring van Suid-Afrikaanse fotoverhale (1960–1985).",
   alternates: {
     canonical: "https://fotoverhale.softcoverbooks.co.za/oor-ons",
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
-    title: "Oor Ons & Erkenning - Suid-Afrikaanse Fotoverhaal Argief",
-    description: "Die bewaringsgeskiedenis en erkenning aan Pieter Haasbroek, Koos Papenfus, Sven Barsby en Carol Hardijzer.",
+    title: "Oor Ons & Erkenning – Suid-Afrikaanse Fotoverhaal Argief",
+    description:
+      "Die bewaringsgeskiedenis en erkenning aan Pieter Haasbroek, Koos Papenfus, Sven Barsby en Carol Hardijzer vir 30+ jaar se fotoverhaal-erfenisbewaring.",
     url: "https://fotoverhale.softcoverbooks.co.za/oor-ons",
     type: "website",
     images: [

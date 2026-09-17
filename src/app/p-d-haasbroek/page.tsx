@@ -42,6 +42,17 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://fotoverhale.softcoverbooks.co.za/p-d-haasbroek",
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "P.D. Haasbroek – Pieter Daniel Haasbroek | Biografiese Profiel",
     description:

@@ -9,15 +9,30 @@ import PulpArchiveBanner from "@/components/PulpArchiveBanner";
 
 interface SeriesDetailClientProps {
   series: Series;
+  relatedSeries?: Series[];
+  contextualParagraphs?: string[];
 }
 
-export default function SeriesDetailClient({ series }: SeriesDetailClientProps) {
+export default function SeriesDetailClient({
+  series,
+  relatedSeries,
+  contextualParagraphs,
+}: SeriesDetailClientProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
   // Filter issues that actually have an image for the lightbox gallery
   const issuesWithImages = series.issues.filter((i) => Boolean(i.image));
   const displayIssues = issuesWithImages.length > 0 ? issuesWithImages : series.issues;
+
+  const paragraphsToDisplay =
+    contextualParagraphs && contextualParagraphs.length > 0
+      ? contextualParagraphs
+      : series.description
+      ? series.description.split(/\n\s*\n/).filter(Boolean)
+      : [
+          "Hierdie reeks vorm deel van die historiese Suid-Afrikaanse fotoverhale-versameling wat oorspronklik opgestel is deur mnr. Koos Papenfus en mnr. Pieter Haasbroek.",
+        ];
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
@@ -27,16 +42,18 @@ export default function SeriesDetailClient({ series }: SeriesDetailClientProps) 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 sm:pt-3.5 pb-3 sm:pb-4 space-y-6 sm:space-y-10">
       
-      {/* Breadcrumb Navigation */}
-      <nav className="flex items-center space-x-2 text-xs text-slate-muted">
+      {/* Breadcrumb Navigation with explicit HTML links */}
+      <nav className="flex items-center space-x-2 text-xs text-slate-muted font-mono" aria-label="Broodkrummels">
         <Link href="/" className="hover:text-pulp-amber transition-colors flex items-center gap-1">
           <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Terug na Gallery</span>
+          <span>Gallery</span>
         </Link>
         <span>/</span>
-        <span>Reekse</span>
+        <Link href="/reeks" className="hover:text-pulp-amber transition-colors">
+          Reekse
+        </Link>
         <span>/</span>
-        <span className="text-paper font-medium">{series.title}</span>
+        <span className="text-paper font-medium truncate max-w-[200px] sm:max-w-none">{series.title}</span>
       </nav>
 
       {/* Hero Header for Series */}
@@ -132,26 +149,20 @@ export default function SeriesDetailClient({ series }: SeriesDetailClientProps) 
               </div>
             </div>
 
-            {/* Description & Koos Papenfus's historical notes */}
-            <div className="space-y-4">
-              <h2 className="font-heading text-lg text-paper uppercase tracking-wider flex items-center gap-2">
-                <FileText className="w-4 h-4 text-pulp-amber" />
-                Reeks-Agtergrond & Historiese Aantekeninge
-              </h2>
-              <div className="text-sm text-slate-muted/95 leading-relaxed space-y-3 font-serif bg-graphite/50 p-5 rounded-xl border border-panel-border">
-                {series.description ? (
-                  series.description.split("\n\n").map((para, idx) => (
+              {/* Description & Historical notes */}
+              <div className="space-y-4">
+                <h2 className="font-heading text-lg text-paper uppercase tracking-wider flex items-center gap-2">
+                  <FileText className="w-4 h-4 text-pulp-amber" />
+                  Reeks-Agtergrond & Historiese Aantekeninge
+                </h2>
+                <div className="text-sm text-slate-muted/95 leading-relaxed space-y-3 font-serif bg-graphite/50 p-5 rounded-xl border border-panel-border">
+                  {paragraphsToDisplay.map((para, idx) => (
                     <p key={idx} className="leading-relaxed">
                       {para}
                     </p>
-                  ))
-                ) : (
-                  <p className="italic">
-                    Hierdie reeks vorm deel van die historiese versameling wat oorspronklik opgestel is deur mnr. Koos Papenfus en mnr. Pieter Haasbroek.
-                  </p>
-                )}
+                  ))}
+                </div>
               </div>
-            </div>
 
           </div>
 
@@ -233,6 +244,62 @@ export default function SeriesDetailClient({ series }: SeriesDetailClientProps) 
           </div>
         )}
       </section>
+
+      {/* Related Series in Same Genre (Internal Links for Googlebot & Users) */}
+      {relatedSeries && relatedSeries.length > 0 && (
+        <section className="bg-panel rounded-2xl border border-panel-border p-6 sm:p-8 space-y-5 shadow-lg">
+          <div className="flex items-center justify-between border-b border-panel-border pb-3">
+            <div>
+              <h2 className="font-heading text-xl sm:text-2xl text-paper uppercase tracking-wider flex items-center gap-2">
+                <BookOpen className="w-5 h-5 text-pulp-amber" />
+                Verwante Reekse ({series.genre})
+              </h2>
+              <p className="text-xs text-slate-muted mt-0.5">
+                Ander Suid-Afrikaanse fotoverhale in dieselfde genre uit die era 1960–1985.
+              </p>
+            </div>
+            <Link
+              href="/reeks"
+              className="text-xs font-heading uppercase tracking-wider text-pulp-amber hover:underline font-bold shrink-0 ml-2"
+            >
+              Bekyk al 111 reekse →
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+            {relatedSeries.map((rel) => (
+              <Link
+                key={rel.id}
+                href={`/reeks/${rel.id}`}
+                className="group flex flex-col bg-graphite/70 hover:bg-graphite border border-panel-border hover:border-pulp-amber/60 rounded-lg p-3 transition-all hover:scale-[1.02] shadow-sm"
+              >
+                <div className="aspect-[3/4] w-full rounded overflow-hidden bg-charcoal mb-2 border border-panel-border">
+                  {rel.cover_image ? (
+                    <img
+                      src={rel.cover_image}
+                      alt={rel.title}
+                      width={150}
+                      height={200}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex flex-col items-center justify-center p-2 text-center bg-panel text-slate-muted">
+                      <BookOpen className="w-6 h-6 text-slate-muted/40 mb-1" />
+                      <span className="text-[10px] uppercase font-mono">Argiefrekord</span>
+                    </div>
+                  )}
+                </div>
+                <h3 className="font-heading text-xs font-bold text-paper uppercase truncate group-hover:text-pulp-amber transition-colors">
+                  {rel.title}
+                </h3>
+                <span className="text-[11px] text-slate-muted mt-0.5">
+                  {rel.total_covers} {rel.total_covers === 1 ? "voorblad" : "voorblaaie"}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Cross-Link to Pulp Books Archive Banner */}
       <PulpArchiveBanner />
