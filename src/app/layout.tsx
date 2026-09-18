@@ -20,9 +20,6 @@ export const metadata: Metadata = {
   authors: [{ name: "Pieter Haasbroek" }, { name: "Koos Papenfus" }],
   creator: "Pieter Haasbroek",
   publisher: "Softcoverbooks.co.za",
-  alternates: {
-    canonical: "https://fotoverhale.softcoverbooks.co.za",
-  },
   openGraph: {
     title: "Die Suid-Afrikaanse Fotoverhaal Argief",
     description: "’n Digitale bewaarplek vir die kyk-en-lees pulp-fenomeen van die 1960’s tot 1980’s in Suid-Afrika. 433 voorblaaie oor 111 reekse.",
