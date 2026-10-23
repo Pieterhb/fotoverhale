@@ -18,51 +18,64 @@ function getFotoverhaleData(): Series[] {
   }
 }
 
+function getDataLastMod(): Date {
+  try {
+    const filePath = path.join(process.cwd(), "data", "fotoverhale.json");
+    if (fs.existsSync(filePath)) {
+      return fs.statSync(filePath).mtime;
+    }
+  } catch {
+    // fallback
+  }
+  return new Date("2026-09-17T12:00:00Z");
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const seriesList = getFotoverhaleData();
-  const currentDate = new Date();
+  const archiveLastMod = getDataLastMod();
 
   // Static core routes (100% 200 OK canonical URLs)
+  // Root URL MUST include trailing slash to match HTTP protocol and server canonical standard
   const staticRoutes: MetadataRoute.Sitemap = [
     {
-      url: `${BASE_URL}`,
-      lastModified: currentDate,
+      url: `${BASE_URL}/`,
+      lastModified: archiveLastMod,
       changeFrequency: "daily",
       priority: 1.0,
     },
     {
       url: `${BASE_URL}/reeks`,
-      lastModified: currentDate,
+      lastModified: archiveLastMod,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: `${BASE_URL}/p-d-haasbroek`,
-      lastModified: currentDate,
+      lastModified: archiveLastMod,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${BASE_URL}/geskiedenis`,
-      lastModified: currentDate,
+      lastModified: archiveLastMod,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/oor-ons`,
-      lastModified: currentDate,
+      lastModified: archiveLastMod,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/privaatheidsbeleid`,
-      lastModified: currentDate,
+      lastModified: archiveLastMod,
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
       url: `${BASE_URL}/terme-en-voorwaardes`,
-      lastModified: currentDate,
+      lastModified: archiveLastMod,
       changeFrequency: "yearly",
       priority: 0.3,
     },
@@ -72,7 +85,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const seenSlugs = new Set<string>();
   const validSeries = seriesList.filter((series) => {
     if (!series.id || typeof series.id !== "string") return false;
-    const cleanSlug = series.id.trim();
+    const cleanSlug = series.id.trim().toLowerCase();
     if (!cleanSlug || seenSlugs.has(cleanSlug)) return false;
     seenSlugs.add(cleanSlug);
 
@@ -85,6 +98,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const seriesRoutes: MetadataRoute.Sitemap = validSeries.map((series) => {
     const coversCount = series.total_covers || (series.issues ? series.issues.length : 1);
+    const cleanSlug = series.id.trim().toLowerCase();
     
     // Tiered priority based on archival content depth
     let priority = 0.7;
@@ -98,8 +112,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
 
     return {
-      url: `${BASE_URL}/reeks/${series.id.trim()}`,
-      lastModified: currentDate,
+      url: `${BASE_URL}/reeks/${cleanSlug}`,
+      lastModified: archiveLastMod,
       changeFrequency,
       priority,
     };

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "404 - Bladsy Nie Gevind Nie",
   robots: {
     index: false,
-    follow: true,
+    follow: false,
   },
 };
 

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description:
     "’n Digitale bewaarplek vir die kyk-en-lees pulp-fenomeen van die 1960’s tot 1980’s in Suid-Afrika. 433 boekvoorblaaie, 111 reekse, historiese artikels en bibliografiese inligting.",
   alternates: {
-    canonical: "https://fotoverhale.softcoverbooks.co.za",
+    canonical: "https://fotoverhale.softcoverbooks.co.za/",
   },
   robots: {
     index: true,
@@ -56,7 +56,7 @@ export default async function HomePage() {
     "@type": "CollectionPage",
     "name": "Die Suid-Afrikaanse Fotoverhaal Argief",
     "description": "Volledige versameling van 111 Suid-Afrikaanse fotoverhaal-reekse en 433 individuele boekvoorblaaie uit die era 1960–1985.",
-    "url": "https://fotoverhale.softcoverbooks.co.za",
+    "url": "https://fotoverhale.softcoverbooks.co.za/",
     "mainEntity": {
       "@type": "ItemList",
       "numberOfItems": allSeries.length,

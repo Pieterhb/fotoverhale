@@ -1,4 +1,10 @@
-# Trailing slash 301 redirects for Cloudflare Pages (Enforce non-trailing slash canonicals)
+# Direct 301 redirects to eliminate duplicate paths and enforce canonical master URLs
+/index.html           /                      301
+/404                  /                      301
+/404.html             /                      301
+/reeks/index.html     /reeks                 301
+
+# Trailing slash 301 redirects for Cloudflare Pages (Enforce non-trailing slash canonicals for sub-routes)
 /geskiedenis/         /geskiedenis           301
 /oor-ons/             /oor-ons               301
 /p-d-haasbroek/       /p-d-haasbroek         301

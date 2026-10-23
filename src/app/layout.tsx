@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Die Suid-Afrikaanse Fotoverhaal Argief",
     description: "’n Digitale bewaarplek vir die kyk-en-lees pulp-fenomeen van die 1960’s tot 1980’s in Suid-Afrika. 433 voorblaaie oor 111 reekse.",
-    url: "https://fotoverhale.softcoverbooks.co.za",
+    url: "https://fotoverhale.softcoverbooks.co.za/",
     siteName: "Suid-Afrikaanse Fotoverhaal Argief",
     images: [
       {
@@ -78,15 +78,10 @@ const jsonLdWebsite = {
     {
       "@type": "WebSite",
       "@id": "https://fotoverhale.softcoverbooks.co.za/#website",
-      "url": "https://fotoverhale.softcoverbooks.co.za",
+      "url": "https://fotoverhale.softcoverbooks.co.za/",
       "name": "Die Suid-Afrikaanse Fotoverhaal Argief",
       "description": "Digitale bewaarplek en navorsingsargief vir die Suid-Afrikaanse fotoverhaal-era (1960–1985).",
       "inLanguage": "af",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://fotoverhale.softcoverbooks.co.za/?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      },
       "creator": {
         "@id": "https://pulpbooksarchive.co.za/p-d-haasbroek/#person"
       },

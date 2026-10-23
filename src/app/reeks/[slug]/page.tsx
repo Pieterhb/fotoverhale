@@ -46,6 +46,8 @@ export async function generateMetadata({
 
   const cleanDescription = generateCleanDescription(series);
 
+  const cleanSlug = series.id.trim().toLowerCase();
+
   return {
     title: `${series.title} – ${series.genre} Fotoverhaal (${series.language})`,
     description: cleanDescription,
@@ -60,7 +62,7 @@ export async function generateMetadata({
       ...(series.aliases || []),
     ],
     alternates: {
-      canonical: `https://fotoverhale.softcoverbooks.co.za/reeks/${series.id}`,
+      canonical: `https://fotoverhale.softcoverbooks.co.za/reeks/${cleanSlug}`,
     },
     robots: {
       index: true,
@@ -76,7 +78,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${series.title} – Voorblaaie & Argief | Fotoverhaal Argief`,
       description: cleanDescription,
-      url: `https://fotoverhale.softcoverbooks.co.za/reeks/${series.id}`,
+      url: `https://fotoverhale.softcoverbooks.co.za/reeks/${cleanSlug}`,
       type: "website",
       images: [
         {
@@ -123,12 +125,14 @@ export default async function SeriesPage({
           ...allSeries.filter((s) => s.id !== series.id && !relatedSeries.some((r) => r.id === s.id)).slice(0, 5 - relatedSeries.length),
         ];
 
+  const cleanSlug = series.id.trim().toLowerCase();
+
   const jsonLdSeries = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "BookSeries",
-        "@id": `https://fotoverhale.softcoverbooks.co.za/reeks/${series.id}#series`,
+        "@id": `https://fotoverhale.softcoverbooks.co.za/reeks/${cleanSlug}#series`,
         "name": series.title,
         "description": generateCleanDescription(series),
         "genre": series.genre,
@@ -147,7 +151,7 @@ export default async function SeriesPage({
         "image": series.cover_image
           ? `https://fotoverhale.softcoverbooks.co.za${series.cover_image}`
           : undefined,
-        "url": `https://fotoverhale.softcoverbooks.co.za/reeks/${series.id}`,
+        "url": `https://fotoverhale.softcoverbooks.co.za/reeks/${cleanSlug}`,
         "numberOfItems": series.total_covers,
         "hasPart": (series.issues || []).map((iss) => ({
           "@type": "PublicationIssue",
