@@ -15,7 +15,12 @@ import urllib.error
 HOST = "fotoverhale.softcoverbooks.co.za"
 KEY = "ab79e4ae29f14aa79d4ec134576e1f02"
 KEY_LOCATION = f"https://{HOST}/{KEY}.txt"
-INDEXNOW_ENDPOINT = "https://api.indexnow.org/IndexNow"
+
+ENDPOINTS = [
+    {"name": "IndexNow (api.indexnow.org)", "url": "https://api.indexnow.org/IndexNow"},
+    {"name": "Bing (bing.com)", "url": "https://www.bing.com/indexnow"},
+    {"name": "Yandex (yandex.com)", "url": "https://yandex.com/indexnow"},
+]
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -69,9 +74,9 @@ def get_urls():
 
 def main():
     urls = get_urls()
-    print(f"Submitting {len(urls)} URLs to IndexNow...")
-    print(f"Host: {HOST}")
-    print(f"Key Location: {KEY_LOCATION}")
+    print(f"Preparing IndexNow submission for host: {HOST}")
+    print(f"Key location: {KEY_LOCATION}")
+    print(f"Total URLs to submit: {len(urls)}")
 
     payload = {
         "host": HOST,
@@ -80,31 +85,35 @@ def main():
         "urlList": urls,
     }
 
-    req = urllib.request.Request(
-        INDEXNOW_ENDPOINT,
-        data=json.dumps(payload).encode("utf-8"),
-        headers={"Content-Type": "application/json; charset=utf-8"},
-        method="POST",
-    )
+    payload_bytes = json.dumps(payload).encode("utf-8")
 
-    try:
-        with urllib.request.urlopen(req) as resp:
-            print(f"HTTP Status: {resp.status} {resp.reason}")
-            if resp.status == 200:
-                print("Success: URLs submitted successfully to IndexNow.")
-            elif resp.status == 202:
-                print("Accepted: URLs received. Key location verification pending by IndexNow.")
-    except urllib.error.HTTPError as e:
-        body = e.read().decode("utf-8", errors="replace")
-        print(f"IndexNow HTTP Error {e.code}: {e.reason}")
-        if body:
-            print(f"Details: {body}")
-        if e.code == 403:
-            print("403 Forbidden: Key not valid or key file could not be verified on the live site yet.")
-        elif e.code == 422:
-            print("422 Unprocessable Entity: URLs do not match host or key.")
-    except Exception as e:
-        print(f"Network error: {e}")
+    for endpoint in ENDPOINTS:
+        name = endpoint["name"]
+        url = endpoint["url"]
+        print(f"\nSubmitting to {name} ({url})...")
+        req = urllib.request.Request(
+            url,
+            data=payload_bytes,
+            headers={"Content-Type": "application/json; charset=utf-8"},
+            method="POST",
+        )
+
+        try:
+            with urllib.request.urlopen(req) as resp:
+                print(f"HTTP Status: {resp.status} {resp.reason}")
+                if resp.status == 200:
+                    print(f"[OK] Success: URLs submitted successfully to {name}.")
+                elif resp.status == 202:
+                    print(f"[ACCEPTED] URLs received by {name}. Key location verification pending.")
+        except urllib.error.HTTPError as e:
+            body = e.read().decode("utf-8", errors="replace")
+            print(f"Response ({e.code}): {body or e.reason}")
+            if e.code == 403:
+                print("403 Forbidden: Key not valid or key verification cached on this endpoint.")
+            elif e.code == 422:
+                print("422 Unprocessable Entity: URLs do not match host or key.")
+        except Exception as e:
+            print(f"Network error connecting to {name}: {e}")
 
 if __name__ == "__main__":
     main()

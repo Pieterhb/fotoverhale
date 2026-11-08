@@ -18,7 +18,13 @@ const projectRoot = path.resolve(__dirname, "..");
 const HOST = "fotoverhale.softcoverbooks.co.za";
 const KEY = "ab79e4ae29f14aa79d4ec134576e1f02";
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
-const INDEXNOW_ENDPOINT = "https://api.indexnow.org/IndexNow";
+
+// IndexNow protocol endpoints (submitting to one shares with all participating engines)
+const ENDPOINTS = [
+  { name: "IndexNow (api.indexnow.org)", url: "https://api.indexnow.org/IndexNow" },
+  { name: "Bing (bing.com)", url: "https://www.bing.com/indexnow" },
+  { name: "Yandex (yandex.com)", url: "https://yandex.com/indexnow" },
+];
 
 function getUrls() {
   // If specific URLs are passed as command-line arguments, use them
@@ -88,32 +94,35 @@ async function submitToIndexNow() {
     urlList,
   };
 
-  try {
-    const response = await fetch(INDEXNOW_ENDPOINT, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-      },
-      body: JSON.stringify(payload),
-    });
+  for (const endpoint of ENDPOINTS) {
+    console.log(`\nSubmitting to ${endpoint.name} (${endpoint.url})...`);
+    try {
+      const response = await fetch(endpoint.url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+        },
+        body: JSON.stringify(payload),
+      });
 
-    console.log(`HTTP Status: ${response.status} ${response.statusText}`);
+      console.log(`HTTP Status: ${response.status} ${response.statusText}`);
 
-    if (response.status === 200) {
-      console.log("Success: URLs submitted successfully to IndexNow.");
-    } else if (response.status === 202) {
-      console.log("Accepted: URLs received. Key location verification is pending by IndexNow.");
-    } else {
-      const text = await response.text();
-      console.error(`IndexNow response (${response.status}):`, text || "(no message body)");
-      if (response.status === 403) {
-        console.error("403 Forbidden: Key not valid or key file could not be verified on the live site yet.");
-      } else if (response.status === 422) {
-        console.error("422 Unprocessable Entity: URLs do not match the specified host or key.");
+      if (response.status === 200) {
+        console.log(`[OK] Success: URLs submitted successfully to ${endpoint.name}.`);
+      } else if (response.status === 202) {
+        console.log(`[ACCEPTED] URLs received by ${endpoint.name}. Key location verification is pending.`);
+      } else {
+        const text = await response.text();
+        console.error(`Response (${response.status}):`, text || "(no message body)");
+        if (response.status === 403) {
+          console.error("403 Forbidden: Key not valid or key verification cached on this endpoint.");
+        } else if (response.status === 422) {
+          console.error("422 Unprocessable Entity: URLs do not match the specified host or key.");
+        }
       }
+    } catch (err) {
+      console.error(`Network error connecting to ${endpoint.name}:`, err.message);
     }
-  } catch (err) {
-    console.error("Network error during IndexNow submission:", err.message);
   }
 }
 
