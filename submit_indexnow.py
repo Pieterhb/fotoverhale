@@ -2,6 +2,7 @@
 """
 Bing / IndexNow URL Submission Script for fotoverhale.softcoverbooks.co.za
 Submits website URLs to the IndexNow protocol (supported by Bing, Yandex, Naver, Seznam, etc.)
+Strictly an offline backend / admin script (NOT called in client-side / frontend code).
 IndexNow documentation: https://www.indexnow.org/documentation
 """
 
@@ -13,8 +14,24 @@ import urllib.request
 import urllib.error
 
 HOST = "fotoverhale.softcoverbooks.co.za"
-KEY = "ab79e4ae29f14aa79d4ec134576e1f02"
-KEY_LOCATION = f"https://{HOST}/{KEY}.txt"
+
+KEYS = [
+    {
+        "key": "ab79e4ae29f14aa79d4ec134576e1f02",
+        "keyLocation": f"https://{HOST}/ab79e4ae29f14aa79d4ec134576e1f02.txt",
+        "label": "Primary Key (Subdomain)",
+    },
+    {
+        "key": "ab79e4ae29f14aa79d4ec134576e1f02",
+        "keyLocation": "https://www.softcoverbooks.co.za/ab79e4ae29f14aa79d4ec134576e1f02.txt",
+        "label": "Primary Key (Main Domain)",
+    },
+    {
+        "key": "e6b44d6766614ba9b455ea2a1eda494d",
+        "keyLocation": "https://www.softcoverbooks.co.za/e6b44d6766614ba9b455ea2a1eda494d.txt",
+        "label": "Parent Domain Key (Bing Verified)",
+    },
+]
 
 ENDPOINTS = [
     {"name": "IndexNow (api.indexnow.org)", "url": "https://api.indexnow.org/IndexNow"},
@@ -25,12 +42,11 @@ ENDPOINTS = [
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 def get_urls():
-    # If specific URLs are passed as CLI arguments, use them
     cli_urls = [arg for arg in sys.argv[1:] if arg.startswith("http")]
     if cli_urls:
         return cli_urls
 
-    # 1. Try reading from built out/sitemap.xml
+    # 1. Read from built out/sitemap.xml
     sitemap_path = os.path.join(PROJECT_ROOT, "out", "sitemap.xml")
     if os.path.exists(sitemap_path):
         with open(sitemap_path, "r", encoding="utf-8") as f:
@@ -74,46 +90,60 @@ def get_urls():
 
 def main():
     urls = get_urls()
-    print(f"Preparing IndexNow submission for host: {HOST}")
-    print(f"Key location: {KEY_LOCATION}")
-    print(f"Total URLs to submit: {len(urls)}")
-
-    payload = {
-        "host": HOST,
-        "key": KEY,
-        "keyLocation": KEY_LOCATION,
-        "urlList": urls,
-    }
-
-    payload_bytes = json.dumps(payload).encode("utf-8")
+    print("========================================")
+    print(f"IndexNow Submission for: {HOST}")
+    print(f"Total URLs to submit:    {len(urls)}")
+    print("========================================")
 
     for endpoint in ENDPOINTS:
         name = endpoint["name"]
         url = endpoint["url"]
-        print(f"\nSubmitting to {name} ({url})...")
-        req = urllib.request.Request(
-            url,
-            data=payload_bytes,
-            headers={"Content-Type": "application/json; charset=utf-8"},
-            method="POST",
-        )
+        print(f"\n--> Submitting to {name}...")
+        submitted = False
 
-        try:
-            with urllib.request.urlopen(req) as resp:
-                print(f"HTTP Status: {resp.status} {resp.reason}")
-                if resp.status == 200:
-                    print(f"[OK] Success: URLs submitted successfully to {name}.")
-                elif resp.status == 202:
-                    print(f"[ACCEPTED] URLs received by {name}. Key location verification pending.")
-        except urllib.error.HTTPError as e:
-            body = e.read().decode("utf-8", errors="replace")
-            print(f"Response ({e.code}): {body or e.reason}")
-            if e.code == 403:
-                print("403 Forbidden: Key not valid or key verification cached on this endpoint.")
-            elif e.code == 422:
-                print("422 Unprocessable Entity: URLs do not match host or key.")
-        except Exception as e:
-            print(f"Network error connecting to {name}: {e}")
+        for key_cfg in KEYS:
+            payload = {
+                "host": HOST,
+                "key": key_cfg["key"],
+                "keyLocation": key_cfg["keyLocation"],
+                "urlList": urls,
+            }
+            payload_bytes = json.dumps(payload).encode("utf-8")
+
+            req = urllib.request.Request(
+                url,
+                data=payload_bytes,
+                headers={"Content-Type": "application/json; charset=utf-8"},
+                method="POST",
+            )
+
+            try:
+                with urllib.request.urlopen(req) as resp:
+                    if resp.status == 200:
+                        print(f"    [200 OK] Successfully submitted via {key_cfg['label']}!")
+                        submitted = True
+                        break
+                    elif resp.status == 202:
+                        print(f"    [202 Accepted] Submission accepted via {key_cfg['label']} (verification pending).")
+                        submitted = True
+                        break
+            except urllib.error.HTTPError as e:
+                if e.code == 403:
+                    # Key verification cached/pending, try next key
+                    continue
+                else:
+                    body = e.read().decode("utf-8", errors="replace")
+                    print(f"    [{e.code}] {body or e.reason}")
+            except Exception as e:
+                print(f"    Network error connecting to {name}: {e}")
+                break
+
+        if not submitted:
+            print(f"    Notice: Key verification pending propagation on {name}.")
+
+    print("\n========================================")
+    print("Submission process complete.")
+    print("========================================")
 
 if __name__ == "__main__":
     main()

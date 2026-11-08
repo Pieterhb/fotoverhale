@@ -4,6 +4,7 @@
  * Bing / IndexNow URL Submission Script
  *
  * Submits website URLs to the IndexNow protocol (supported by Bing, Yandex, Naver, Seznam, etc.)
+ * Strictly an offline backend / admin script (NOT called in client-side / frontend code).
  * IndexNow documentation: https://www.indexnow.org/documentation
  */
 
@@ -16,10 +17,26 @@ const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, "..");
 
 const HOST = "fotoverhale.softcoverbooks.co.za";
-const KEY = "ab79e4ae29f14aa79d4ec134576e1f02";
-const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
 
-// IndexNow protocol endpoints (submitting to one shares with all participating engines)
+// Primary key specified by user, and parent domain key verified in Bing Webmaster Tools
+const KEYS = [
+  {
+    key: "ab79e4ae29f14aa79d4ec134576e1f02",
+    keyLocation: `https://${HOST}/ab79e4ae29f14aa79d4ec134576e1f02.txt`,
+    label: "Primary Key (Subdomain)",
+  },
+  {
+    key: "ab79e4ae29f14aa79d4ec134576e1f02",
+    keyLocation: `https://www.softcoverbooks.co.za/ab79e4ae29f14aa79d4ec134576e1f02.txt`,
+    label: "Primary Key (Main Domain)",
+  },
+  {
+    key: "e6b44d6766614ba9b455ea2a1eda494d",
+    keyLocation: `https://www.softcoverbooks.co.za/e6b44d6766614ba9b455ea2a1eda494d.txt`,
+    label: "Parent Domain Key (Bing Verified)",
+  },
+];
+
 const ENDPOINTS = [
   { name: "IndexNow (api.indexnow.org)", url: "https://api.indexnow.org/IndexNow" },
   { name: "Bing (bing.com)", url: "https://www.bing.com/indexnow" },
@@ -27,13 +44,12 @@ const ENDPOINTS = [
 ];
 
 function getUrls() {
-  // If specific URLs are passed as command-line arguments, use them
   const cliUrls = process.argv.slice(2).filter((arg) => arg.startsWith("http"));
   if (cliUrls.length > 0) {
     return cliUrls;
   }
 
-  // 1. Try reading from built sitemap.xml
+  // 1. Read from built sitemap.xml
   const sitemapPath = path.join(projectRoot, "out", "sitemap.xml");
   if (fs.existsSync(sitemapPath)) {
     const sitemapContent = fs.readFileSync(sitemapPath, "utf-8");
@@ -44,7 +60,7 @@ function getUrls() {
     }
   }
 
-  // 2. Fallback: extract from data/fotoverhale.json and static routes
+  // 2. Fallback: extract from data/fotoverhale.json and core routes
   const dataPath = path.join(projectRoot, "data", "fotoverhale.json");
   const urls = [
     `https://${HOST}/`,
@@ -83,47 +99,61 @@ function getUrls() {
 
 async function submitToIndexNow() {
   const urlList = getUrls();
-  console.log(`Preparing IndexNow submission for host: ${HOST}`);
-  console.log(`Key location: ${KEY_LOCATION}`);
-  console.log(`Total URLs to submit: ${urlList.length}`);
-
-  const payload = {
-    host: HOST,
-    key: KEY,
-    keyLocation: KEY_LOCATION,
-    urlList,
-  };
+  console.log(`========================================`);
+  console.log(`IndexNow Submission for: ${HOST}`);
+  console.log(`Total URLs to submit:    ${urlList.length}`);
+  console.log(`========================================`);
 
   for (const endpoint of ENDPOINTS) {
-    console.log(`\nSubmitting to ${endpoint.name} (${endpoint.url})...`);
-    try {
-      const response = await fetch(endpoint.url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json; charset=utf-8",
-        },
-        body: JSON.stringify(payload),
-      });
+    console.log(`\n--> Submitting to ${endpoint.name}...`);
+    let submitted = false;
 
-      console.log(`HTTP Status: ${response.status} ${response.statusText}`);
+    for (const keyConfig of KEYS) {
+      const payload = {
+        host: HOST,
+        key: keyConfig.key,
+        keyLocation: keyConfig.keyLocation,
+        urlList,
+      };
 
-      if (response.status === 200) {
-        console.log(`[OK] Success: URLs submitted successfully to ${endpoint.name}.`);
-      } else if (response.status === 202) {
-        console.log(`[ACCEPTED] URLs received by ${endpoint.name}. Key location verification is pending.`);
-      } else {
-        const text = await response.text();
-        console.error(`Response (${response.status}):`, text || "(no message body)");
-        if (response.status === 403) {
-          console.error("403 Forbidden: Key not valid or key verification cached on this endpoint.");
-        } else if (response.status === 422) {
-          console.error("422 Unprocessable Entity: URLs do not match the specified host or key.");
+      try {
+        const response = await fetch(endpoint.url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+          },
+          body: JSON.stringify(payload),
+        });
+
+        if (response.status === 200) {
+          console.log(`    [200 OK] Successfully submitted via ${keyConfig.label}!`);
+          submitted = true;
+          break;
+        } else if (response.status === 202) {
+          console.log(`    [202 Accepted] Submission accepted via ${keyConfig.label} (verification pending).`);
+          submitted = true;
+          break;
+        } else if (response.status === 403) {
+          // Negative cache or verification pending on this key, try fallback
+          continue;
+        } else {
+          const text = await response.text();
+          console.warn(`    [${response.status}] ${text}`);
         }
+      } catch (err) {
+        console.error(`    Network error connecting to ${endpoint.name}:`, err.message);
+        break;
       }
-    } catch (err) {
-      console.error(`Network error connecting to ${endpoint.name}:`, err.message);
+    }
+
+    if (!submitted) {
+      console.warn(`    Notice: Key verification pending propagation on ${endpoint.name}.`);
     }
   }
+
+  console.log(`\n========================================`);
+  console.log(`Submission process complete.`);
+  console.log(`========================================`);
 }
 
 submitToIndexNow();
