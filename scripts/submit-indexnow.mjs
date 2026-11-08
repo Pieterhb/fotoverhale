@@ -21,6 +21,16 @@ const HOST = "fotoverhale.softcoverbooks.co.za";
 // Primary key specified by user, and parent domain key verified in Bing Webmaster Tools
 const KEYS = [
   {
+    key: "e6b44d6766614ba9b455ea2a1eda494d",
+    keyLocation: `https://${HOST}/e6b44d6766614ba9b455ea2a1eda494d.txt`,
+    label: "Bing Webmaster Verified Key (Subdomain)",
+  },
+  {
+    key: "e6b44d6766614ba9b455ea2a1eda494d",
+    keyLocation: `https://www.softcoverbooks.co.za/e6b44d6766614ba9b455ea2a1eda494d.txt`,
+    label: "Bing Webmaster Verified Key (Main Domain)",
+  },
+  {
     key: "ab79e4ae29f14aa79d4ec134576e1f02",
     keyLocation: `https://${HOST}/ab79e4ae29f14aa79d4ec134576e1f02.txt`,
     label: "Primary Key (Subdomain)",
@@ -29,11 +39,6 @@ const KEYS = [
     key: "ab79e4ae29f14aa79d4ec134576e1f02",
     keyLocation: `https://www.softcoverbooks.co.za/ab79e4ae29f14aa79d4ec134576e1f02.txt`,
     label: "Primary Key (Main Domain)",
-  },
-  {
-    key: "e6b44d6766614ba9b455ea2a1eda494d",
-    keyLocation: `https://www.softcoverbooks.co.za/e6b44d6766614ba9b455ea2a1eda494d.txt`,
-    label: "Parent Domain Key (Bing Verified)",
   },
 ];
 
