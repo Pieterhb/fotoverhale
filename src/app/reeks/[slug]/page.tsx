@@ -112,18 +112,29 @@ export default async function SeriesPage({
 
   const contextualParagraphs = getSeriesContextualParagraphs(series);
 
-  // Find 4 related series in same genre (or fallback to other popular series)
-  const relatedSeries = allSeries
-    .filter((s) => s.id !== series.id && s.genre === series.genre)
-    .slice(0, 5);
+  // Cyclic selection in same genre to ensure balanced internal cross-linking across all series
+  const currentGenre = series.genre;
+  const sameGenre = allSeries.filter((s) => s.genre === currentGenre);
+  const currentIdxInGenre = sameGenre.findIndex((s) => s.id === series.id);
 
-  const finalRelated =
-    relatedSeries.length >= 3
-      ? relatedSeries
-      : [
-          ...relatedSeries,
-          ...allSeries.filter((s) => s.id !== series.id && !relatedSeries.some((r) => r.id === s.id)).slice(0, 5 - relatedSeries.length),
-        ];
+  const finalRelated: Series[] = [];
+  if (sameGenre.length > 1) {
+    for (let offset = 1; offset < Math.min(6, sameGenre.length); offset++) {
+      finalRelated.push(sameGenre[(currentIdxInGenre + offset) % sameGenre.length]);
+    }
+  }
+
+  if (finalRelated.length < 5) {
+    const currentIdxInAll = allSeries.findIndex((s) => s.id === series.id);
+    let offset = 1;
+    while (finalRelated.length < 5 && offset < allSeries.length) {
+      const candidate = allSeries[(currentIdxInAll + offset) % allSeries.length];
+      if (candidate.id !== series.id && !finalRelated.some((r) => r.id === candidate.id)) {
+        finalRelated.push(candidate);
+      }
+      offset++;
+    }
+  }
 
   const cleanSlug = series.id.trim().toLowerCase();
 
@@ -152,7 +163,6 @@ export default async function SeriesPage({
           ? `https://fotoverhale.softcoverbooks.co.za${series.cover_image}`
           : undefined,
         "url": `https://fotoverhale.softcoverbooks.co.za/reeks/${cleanSlug}`,
-        "numberOfItems": series.total_covers,
         "hasPart": (series.issues || []).map((iss) => ({
           "@type": "PublicationIssue",
           "issueNumber": iss.number,
@@ -179,7 +189,7 @@ export default async function SeriesPage({
             "@type": "ListItem",
             "position": 3,
             "name": series.title,
-            "item": `https://fotoverhale.softcoverbooks.co.za/reeks/${series.id}`,
+            "item": `https://fotoverhale.softcoverbooks.co.za/reeks/${cleanSlug}`,
           },
         ],
       },

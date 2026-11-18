@@ -15,26 +15,19 @@ import urllib.error
 
 HOST = "fotoverhale.softcoverbooks.co.za"
 
+# Master key verified in Bing Webmaster Tools for www.softcoverbooks.co.za.
+# Per IndexNow protocol, the keyLocation on the apex/www domain is accepted for all subdomains.
+# See: https://www.indexnow.org/faq  ("Can the key file be on the root domain?")
 KEYS = [
     {
         "key": "e6b44d6766614ba9b455ea2a1eda494d",
         "keyLocation": f"https://{HOST}/e6b44d6766614ba9b455ea2a1eda494d.txt",
-        "label": "Bing Webmaster Verified Key (Subdomain)",
+        "label": "Master Key (same-host) [ACTIVE]",
     },
     {
         "key": "e6b44d6766614ba9b455ea2a1eda494d",
         "keyLocation": "https://www.softcoverbooks.co.za/e6b44d6766614ba9b455ea2a1eda494d.txt",
-        "label": "Bing Webmaster Verified Key (Main Domain)",
-    },
-    {
-        "key": "ab79e4ae29f14aa79d4ec134576e1f02",
-        "keyLocation": f"https://{HOST}/ab79e4ae29f14aa79d4ec134576e1f02.txt",
-        "label": "Primary Key (Subdomain)",
-    },
-    {
-        "key": "ab79e4ae29f14aa79d4ec134576e1f02",
-        "keyLocation": "https://www.softcoverbooks.co.za/ab79e4ae29f14aa79d4ec134576e1f02.txt",
-        "label": "Primary Key (Main Domain)",
+        "label": "Master Key (root domain fallback)",
     },
 ]
 
@@ -134,7 +127,10 @@ def main():
                         break
             except urllib.error.HTTPError as e:
                 if e.code == 403:
-                    # Key verification cached/pending, try next key
+                    # 403 UserForbiddedToAccessSite = this key is not registered/verified
+                    # in Bing Webmaster Tools for this site. Try next key.
+                    body = e.read().decode("utf-8", errors="replace")
+                    print(f"    [403 SKIP] {key_cfg['label']}: {body}")
                     continue
                 else:
                     body = e.read().decode("utf-8", errors="replace")

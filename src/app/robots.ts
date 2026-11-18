@@ -6,24 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: [
-          "/_next/",
-          "/api/",
-          "/404",
-          "/404.html",
-          "/*?*",
-        ],
-      },
-      {
-        userAgent: "Googlebot",
-        allow: "/",
-        disallow: [
-          "/_next/",
-          "/api/",
-          "/404",
-          "/404.html",
-          "/*?*",
-        ],
       },
     ],
     sitemap: "https://fotoverhale.softcoverbooks.co.za/sitemap.xml",
