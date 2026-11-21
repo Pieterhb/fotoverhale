@@ -84,12 +84,16 @@ export default async function HomePage() {
         
         <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6 flex flex-col items-center">
           
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-pulp-amber/10 border border-pulp-amber/30 text-pulp-amber text-xs font-semibold uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Suid-Afrikaanse Kultuurskatte & Africana Argief</span>
+          <div className="inline-flex items-center justify-center space-x-1.5 sm:space-x-2 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-pulp-amber/10 border border-pulp-amber/30 text-pulp-amber text-[10px] sm:text-xs font-semibold uppercase tracking-normal sm:tracking-wider max-w-full text-center">
+            <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
+            <span>
+              <span className="block sm:inline">Suid-Afrikaanse Kultuurskatte</span>
+              <span className="hidden sm:inline"> &amp; </span>
+              <span className="block sm:inline">&amp; Africana Argief</span>
+            </span>
           </div>
 
-          <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-bold text-paper uppercase tracking-tight leading-none text-center">
+          <h1 className="font-heading text-3xl sm:text-6xl lg:text-7xl font-bold text-paper uppercase tracking-tight leading-none text-center break-words">
             Die Suid-Afrikaanse <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-pulp-amber via-amber-200 to-pulp-crimson">
               Fotoverhaal Argief

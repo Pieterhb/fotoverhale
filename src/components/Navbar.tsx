@@ -31,42 +31,45 @@ export default function Navbar() {
           <nav className="flex items-stretch sm:items-center justify-between sm:justify-end gap-1 sm:gap-1.5 md:gap-2 text-xs sm:text-sm font-medium w-full sm:w-auto shrink-0">
             <Link
               href="/"
-              className="flex-1 sm:flex-initial flex items-center justify-center space-x-0.5 sm:space-x-1 px-1 sm:px-1.5 md:px-2.5 lg:px-3 py-1 sm:py-1.5 rounded-md text-paper-muted hover:text-paper hover:bg-panel bg-panel/50 sm:bg-transparent border border-panel-border sm:border-transparent transition-all text-center min-w-0"
+              className="flex-1 sm:flex-initial flex flex-col sm:flex-row items-center justify-center space-y-0.5 sm:space-y-0 sm:space-x-1 px-1 sm:px-1.5 md:px-2.5 lg:px-3 py-1 sm:py-1.5 rounded-md text-paper-muted hover:text-paper hover:bg-panel bg-panel/50 sm:bg-transparent border border-panel-border sm:border-transparent transition-all text-center min-w-0"
             >
               <Compass className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-pulp-amber shrink-0" />
-              <span className="font-heading tracking-tight sm:tracking-tight md:tracking-normal lg:tracking-wide uppercase text-[10px] sm:text-[11px] md:text-xs lg:text-sm leading-tight whitespace-nowrap">Gallery</span>
+              <span className="font-heading tracking-tight sm:tracking-tight md:tracking-normal lg:tracking-wide uppercase text-[9px] sm:text-[11px] md:text-xs lg:text-sm leading-tight sm:whitespace-nowrap">Gallery</span>
             </Link>
 
             <Link
               href="/reeks"
-              className="flex-1 sm:flex-initial flex items-center justify-center space-x-0.5 sm:space-x-1 px-1 sm:px-1.5 md:px-2.5 lg:px-3 py-1 sm:py-1.5 rounded-md text-paper-muted hover:text-paper hover:bg-panel bg-panel/50 sm:bg-transparent border border-panel-border sm:border-transparent transition-all text-center min-w-0"
+              className="flex-1 sm:flex-initial flex flex-col sm:flex-row items-center justify-center space-y-0.5 sm:space-y-0 sm:space-x-1 px-1 sm:px-1.5 md:px-2.5 lg:px-3 py-1 sm:py-1.5 rounded-md text-paper-muted hover:text-paper hover:bg-panel bg-panel/50 sm:bg-transparent border border-panel-border sm:border-transparent transition-all text-center min-w-0"
             >
               <BookOpen className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-pulp-amber shrink-0" />
-              <span className="font-heading tracking-tight sm:tracking-tight md:tracking-normal lg:tracking-wide uppercase text-[10px] sm:text-[11px] md:text-xs lg:text-sm leading-tight whitespace-nowrap">Reekse</span>
+              <span className="font-heading tracking-tight sm:tracking-tight md:tracking-normal lg:tracking-wide uppercase text-[9px] sm:text-[11px] md:text-xs lg:text-sm leading-tight sm:whitespace-nowrap">Reekse</span>
             </Link>
 
             <Link
               href="/geskiedenis"
-              className="flex-1 sm:flex-initial flex items-center justify-center space-x-0.5 sm:space-x-1 px-1 sm:px-1.5 md:px-2.5 lg:px-3 py-1 sm:py-1.5 rounded-md text-paper-muted hover:text-paper hover:bg-panel bg-panel/50 sm:bg-transparent border border-panel-border sm:border-transparent transition-all text-center min-w-0"
+              className="flex-1 sm:flex-initial flex flex-col sm:flex-row items-center justify-center space-y-0.5 sm:space-y-0 sm:space-x-1 px-1 sm:px-1.5 md:px-2.5 lg:px-3 py-1 sm:py-1.5 rounded-md text-paper-muted hover:text-paper hover:bg-panel bg-panel/50 sm:bg-transparent border border-panel-border sm:border-transparent transition-all text-center min-w-0"
             >
               <History className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-pulp-amber shrink-0" />
-              <span className="font-heading tracking-tight sm:tracking-tight md:tracking-normal lg:tracking-wide uppercase text-[10px] sm:text-[11px] md:text-xs lg:text-sm leading-tight whitespace-nowrap">Geskiedenis</span>
+              <span className="font-heading tracking-tight sm:tracking-tight md:tracking-normal lg:tracking-wide uppercase text-[9px] sm:text-[11px] md:text-xs lg:text-sm leading-tight sm:whitespace-nowrap">Geskiedenis</span>
             </Link>
 
             <Link
               href="/oor-ons"
-              className="flex-1 sm:flex-initial flex items-center justify-center space-x-0.5 sm:space-x-1 px-1 sm:px-1.5 md:px-2.5 lg:px-3 py-1 sm:py-1.5 rounded-md text-paper-muted hover:text-paper hover:bg-panel bg-panel/50 sm:bg-transparent border border-panel-border sm:border-transparent transition-all text-center min-w-0"
+              className="flex-1 sm:flex-initial flex flex-col sm:flex-row items-center justify-center space-y-0.5 sm:space-y-0 sm:space-x-1 px-1 sm:px-1.5 md:px-2.5 lg:px-3 py-1 sm:py-1.5 rounded-md text-paper-muted hover:text-paper hover:bg-panel bg-panel/50 sm:bg-transparent border border-panel-border sm:border-transparent transition-all text-center min-w-0"
             >
               <Info className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-pulp-amber shrink-0" />
-              <span className="font-heading tracking-tight sm:tracking-tight md:tracking-normal lg:tracking-wide uppercase text-[10px] sm:text-[11px] md:text-xs lg:text-sm leading-tight whitespace-nowrap">Oor Ons</span>
+              <span className="font-heading tracking-tight sm:tracking-tight md:tracking-normal lg:tracking-wide uppercase text-[9px] sm:text-[11px] md:text-xs lg:text-sm leading-tight sm:whitespace-nowrap">Oor Ons</span>
             </Link>
 
             <Link
               href="/p-d-haasbroek"
-              className="flex-1 sm:flex-initial flex items-center justify-center space-x-0.5 sm:space-x-1 px-1 sm:px-1.5 md:px-2.5 lg:px-3 py-1 sm:py-1.5 rounded-md text-paper-muted hover:text-paper hover:bg-panel bg-panel/50 sm:bg-transparent border border-panel-border sm:border-transparent transition-all text-center min-w-0"
+              className="flex-1 sm:flex-initial flex flex-col sm:flex-row items-center justify-center space-y-0.5 sm:space-y-0 sm:space-x-1 px-1 sm:px-1.5 md:px-2.5 lg:px-3 py-1 sm:py-1.5 rounded-md text-paper-muted hover:text-paper hover:bg-panel bg-panel/50 sm:bg-transparent border border-panel-border sm:border-transparent transition-all text-center min-w-0"
             >
               <UserCheck className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-pulp-amber shrink-0" />
-              <span className="font-heading tracking-tight sm:tracking-tight md:tracking-normal lg:tracking-wide uppercase text-[10px] sm:text-[11px] md:text-xs lg:text-sm leading-tight whitespace-nowrap">P.D. Haasbroek</span>
+              <span className="font-heading tracking-tight sm:tracking-tight md:tracking-normal lg:tracking-wide uppercase text-[8.5px] sm:text-[11px] md:text-xs lg:text-sm leading-tight sm:whitespace-nowrap">
+                <span className="block sm:inline">P.D.</span>
+                <span className="block sm:inline sm:ml-0.5">Haasbroek</span>
+              </span>
             </Link>
 
             {/* External link to main softcoverbooks.co.za */}

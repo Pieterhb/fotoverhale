@@ -58,26 +58,26 @@ export default function Lightbox({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-graphite/95 backdrop-blur-md p-4 sm:p-6 animate-in fade-in duration-200">
       
       {/* Top Bar with Controls */}
-      <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
-        <div className="text-left">
-          <span className="text-xs uppercase font-mono tracking-widest text-pulp-amber">
+      <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-3 z-10">
+        <div className="text-left min-w-0 flex-1 pr-2">
+          <span className="text-[10px] sm:text-xs uppercase font-mono tracking-wider sm:tracking-widest text-pulp-amber truncate block">
             {seriesTitle}
           </span>
-          <h4 className="font-heading text-lg sm:text-xl text-paper uppercase tracking-wide">
+          <h4 className="font-heading text-sm sm:text-xl text-paper uppercase tracking-wide truncate sm:whitespace-normal">
             Uitgawe #{currentIssue.number}: {currentIssue.title}
           </h4>
         </div>
 
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-2 sm:space-x-3 shrink-0">
           <span className="hidden sm:inline-block text-xs font-mono text-slate-muted bg-panel px-3 py-1 rounded border border-panel-border">
             {currentIndex + 1} van {issues.length}
           </span>
           <button
             onClick={onClose}
-            className="p-2 rounded-full bg-panel hover:bg-panel-border text-paper transition-colors border border-panel-border"
+            className="p-1.5 sm:p-2 rounded-full bg-panel hover:bg-panel-border text-paper transition-colors border border-panel-border"
             title="Sluit Ligkas (Esc)"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </div>
       </div>

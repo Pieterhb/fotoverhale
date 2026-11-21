@@ -233,8 +233,8 @@ export default function PdHaasbroekPage() {
         <div className="absolute top-0 right-0 w-80 h-80 bg-pulp-amber/5 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20"></div>
 
         <div className="flex flex-wrap items-center gap-2">
-          <span className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-pulp-amber/15 text-pulp-amber border border-pulp-amber/30 text-xs font-semibold uppercase tracking-wider">
-            <UserCheck className="w-3.5 h-3.5" />
+          <span className="inline-flex items-center space-x-1 sm:space-x-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-pulp-amber/15 text-pulp-amber border border-pulp-amber/30 text-[10px] sm:text-xs font-semibold uppercase tracking-normal sm:tracking-wider max-w-full">
+            <UserCheck className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
             <span>Biografiese &amp; Identiteitsverwysing</span>
           </span>
           <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-full bg-pulp-crimson/20 text-paper border border-pulp-crimson/40 text-xs font-mono">
@@ -541,10 +541,10 @@ export default function PdHaasbroekPage() {
                   href="https://scholar.ufs.ac.za/items/8859893a-0c52-4d7a-81ff-b7e8d631c3b5"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-1.5 text-xs text-pulp-amber hover:underline font-mono"
+                  className="inline-flex items-start sm:items-center space-x-1.5 text-[11px] sm:text-xs text-pulp-amber hover:underline font-mono max-w-full"
                 >
-                  <ExternalLink className="w-3.5 h-3.5" />
-                  <span>Besigtig amptelike rekord op UVS Navorsingsbewaarplek (UFS Scholar)</span>
+                  <ExternalLink className="w-3.5 h-3.5 shrink-0 mt-0.5 sm:mt-0" />
+                  <span className="break-words">Besigtig amptelike rekord op UVS Navorsingsbewaarplek (UFS Scholar)</span>
                 </a>
               </div>
             </div>
@@ -634,10 +634,10 @@ export default function PdHaasbroekPage() {
                       href="https://pulpbooksarchive.co.za/p-d-haasbroek/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-pulp-amber hover:underline inline-flex items-center gap-1 font-bold"
+                      className="text-pulp-amber hover:underline inline-flex items-center gap-1 font-bold break-all sm:break-normal"
                     >
-                      <span>https://pulpbooksarchive.co.za/p-d-haasbroek/</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
+                      <span className="break-all sm:break-normal">https://pulpbooksarchive.co.za/p-d-haasbroek/</span>
+                      <ExternalLink className="w-3.5 h-3.5 shrink-0" />
                     </a>
                   </td>
                 </tr>

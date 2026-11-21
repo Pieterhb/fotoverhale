@@ -134,16 +134,16 @@ export default function SeriesDetailClient({
             </h1>
 
             {/* Quick stats banner */}
-            <div className="flex items-center gap-6 text-sm border-y border-panel-border py-3">
+            <div className="flex items-center gap-3 sm:gap-6 text-sm border-y border-panel-border py-3">
               <div>
-                <span className="text-xs text-slate-muted block">Beskikbare Voorblaaie</span>
-                <span className="font-heading text-xl font-bold text-pulp-amber">
+                <span className="text-[11px] sm:text-xs text-slate-muted block">Beskikbare Voorblaaie</span>
+                <span className="font-heading text-lg sm:text-xl font-bold text-pulp-amber">
                   {series.total_covers}
                 </span>
               </div>
-              <div className="border-l border-panel-border pl-6">
-                <span className="text-xs text-slate-muted block">Geregistreerde Uitgawes</span>
-                <span className="font-heading text-xl font-bold text-paper">
+              <div className="border-l border-panel-border pl-3 sm:pl-6">
+                <span className="text-[11px] sm:text-xs text-slate-muted block">Geregistreerde Uitgawes</span>
+                <span className="font-heading text-lg sm:text-xl font-bold text-paper">
                   {series.issues.length > 0 ? series.issues.length : "Word opgedateer"}
                 </span>
               </div>
@@ -171,17 +171,17 @@ export default function SeriesDetailClient({
 
       {/* Covers Gallery Section */}
       <section className="space-y-6">
-        <div className="flex items-center justify-between border-b border-panel-border pb-4">
-          <div>
-            <h2 className="font-heading text-2xl sm:text-3xl text-paper uppercase tracking-wide flex items-center gap-2">
-              <Layers className="w-6 h-6 text-pulp-amber" />
-              Voorblaaie & Uitgawes van {series.title}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 border-b border-panel-border pb-4">
+          <div className="min-w-0">
+            <h2 className="font-heading text-xl sm:text-3xl text-paper uppercase tracking-wide flex items-start sm:items-center gap-2">
+              <Layers className="w-5 h-5 sm:w-6 sm:h-6 text-pulp-amber shrink-0 mt-0.5 sm:mt-0" />
+              <span>Voorblaaie &amp; Uitgawes van {series.title}</span>
             </h2>
             <p className="text-xs text-slate-muted mt-1">
               Klik op enige voorblad om dit in volle resolusie in die ligkas te besigtig.
             </p>
           </div>
-          <span className="text-xs font-mono text-pulp-amber bg-panel px-3 py-1.5 rounded border border-panel-border">
+          <span className="text-xs font-mono text-pulp-amber bg-panel px-3 py-1.5 rounded border border-panel-border self-start sm:self-auto shrink-0">
             {displayIssues.length} {displayIssues.length === 1 ? "Uitgawe" : "Uitgawes"}
           </span>
         </div>
@@ -248,11 +248,11 @@ export default function SeriesDetailClient({
       {/* Related Series in Same Genre (Internal Links for Googlebot & Users) */}
       {relatedSeries && relatedSeries.length > 0 && (
         <section className="bg-panel rounded-2xl border border-panel-border p-6 sm:p-8 space-y-5 shadow-lg">
-          <div className="flex items-center justify-between border-b border-panel-border pb-3">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 sm:gap-4 border-b border-panel-border pb-3">
             <div>
-              <h2 className="font-heading text-xl sm:text-2xl text-paper uppercase tracking-wider flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-pulp-amber" />
-                Verwante Reekse ({series.genre})
+              <h2 className="font-heading text-lg sm:text-2xl text-paper uppercase tracking-wider flex items-center gap-2">
+                <BookOpen className="w-5 h-5 text-pulp-amber shrink-0" />
+                <span>Verwante Reekse ({series.genre})</span>
               </h2>
               <p className="text-xs text-slate-muted mt-0.5">
                 Ander Suid-Afrikaanse fotoverhale in dieselfde genre uit die era 1960–1985.
@@ -260,7 +260,7 @@ export default function SeriesDetailClient({
             </div>
             <Link
               href="/reeks"
-              className="text-xs font-heading uppercase tracking-wider text-pulp-amber hover:underline font-bold shrink-0 ml-2"
+              className="text-xs font-heading uppercase tracking-wider text-pulp-amber hover:underline font-bold self-start sm:self-auto shrink-0 sm:ml-2"
             >
               Bekyk al 111 reekse →
             </Link>
